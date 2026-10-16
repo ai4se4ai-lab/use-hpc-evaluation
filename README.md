@@ -364,12 +364,3 @@ Run `make test` after a change, and `make check` to confirm that the committed t
 - Round 6 is a human judgement. It is documented row by row, but it was made by one screener.
 - The EMSE paper's RQ5 section describes the pre-registered design (stratified domains, a no-skill baseline). This repository implements the SE-venue sample reported in the MSR paper; the baseline condition is not yet implemented.
 
----
-
-## Citing
-
-If you use this harness or its data, please cite the MSR 2027 tool paper (BibTeX will be added with the Zenodo DOI):
-
-> Majid Babaei. *Every Claim a Job: An Agent Skill for Checked LLM Benchmark Studies on HPC Clusters.* MSR 2027 Data and Tool Showcase Track.
-
-See also the skill itself: <https://github.com/ai4se4ai-lab/use-hpc-claude-skill>.
