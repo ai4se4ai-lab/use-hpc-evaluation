@@ -57,3 +57,6 @@ docs/**/*.xmpi
 
 # Claude Code local state
 .claude/settings.local.json
+docs/ase/
+!docs/ase/analysis/
+!docs/ase/generated/
