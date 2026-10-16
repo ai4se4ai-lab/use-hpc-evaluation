@@ -1,0 +1,20 @@
+{
+ "paper": "IRCoCo (FSE 2024)",
+ "modules": "StdEnv/2023 python/3.10 java/17.0.6",
+ "requirements": ["torch==2.1.2", "tqdm", "javalang", "pyext", "deepspeed", "numpy<2", "huggingface_hub", "fuzzywuzzy"],
+ "setup": [
+   "cd {REPO}/data/py150 2>/dev/null && HF_HUB_OFFLINE=0 timeout 1h bash download_and_extract.sh; ls {REPO}/data/py150 | head"
+ ],
+ "probe_gpu": "h100_3g.40gb:1", "probe_time": "04:00:00",
+ "entry_points": [
+   {"name": "env_python37_torch191", "cmd": "python -c 'import sys; assert sys.version_info[:2]==(3,7), sys.version'"},
+   {"name": "env_vendored_transformers_4161", "cmd": "cd {REPO}/transformers && pip install --no-index --no-deps -e . && python -c 'import transformers; print(transformers.__version__)'"},
+   {"name": "1_preprocess_py150", "cmd": "cd {REPO}/data/py150 && timeout 1h python preprocess.py --base_dir=py150_files --output_dir=token_completion"},
+   {"name": "2_sft_codexglue_external", "cmd": "test -f {REPO}/code/run_lm.py || test -d {REPO}/CodeXGLUE || (echo 'SFT step is external (CodeXGLUE); no script in the artefact'; exit 2)"},
+   {"name": "3_generate_score", "cmd": "cd {REPO} && timeout 30m python generate_score.py --checkpoint_path PATH_OF_FINETUNED_GPT2 --mode score --model gpt2 --batch_size 1 --text_length 256 --min_query_len 10 --dataset_name data/final/jsonl --language python"},
+   {"name": "4_train_estimator", "cmd": "cd {REPO} && timeout 30m python train_estimator.py --batch_size 8 --run_name probe --epoch 1 --data_path PATH_OF_GENERATED_DATASET --metric gpt2_bleu --language python"},
+   {"name": "5_train_rl", "cmd": "cd {REPO} && timeout 30m python train.py --batch-size-per-replica=14 --grad-acc-steps=14 --epochs=1 --lr=5e-5 --tuning_mode=rl --model=gpt-2"},
+   {"name": "6_evaluator", "cmd": "cd {REPO}/code && timeout 10m python evaluator.py -a=evaluator/answers.json -p=evaluator/predictions.json"}
+ ],
+ "not_comparable": [["gpt2|py150", "token-level accuracy", "", "Tables (IRCoCo)", "evaluated only if the documented chain runs (see probe)"]]
+}

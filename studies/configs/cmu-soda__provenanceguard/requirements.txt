@@ -1,0 +1,9 @@
+# artefact requirements.txt (exact pins where the wheelhouse has them)
+anthropic
+matplotlib
+numpy
+openai
+pandas
+seaborn
+vllm
+huggingface_hub

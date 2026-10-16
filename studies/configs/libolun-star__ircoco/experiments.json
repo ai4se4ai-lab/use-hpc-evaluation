@@ -1,0 +1,127 @@
+{
+ "_repro": {
+  "paper": "IRCoCo (FSE 2024)",
+  "src_dirs": ".",
+  "hash_dirs": ".",
+  "modules": "StdEnv/2023 python/3.10 java/17.0.6"
+ },
+ "project": "r_probe_ircoco",
+ "require_gpu": true,
+ "vars": {},
+ "smoke": {
+  "vars": {},
+  "time": "00:55:00"
+ },
+ "stages": [
+  {
+   "name": "setup",
+   "description": "data and models for the probe",
+   "internet": true,
+   "resources": {
+    "gpus": "h100_1g.10gb:1",
+    "cpus": 4,
+    "mem": "16G",
+    "time": "02:00:00"
+   },
+   "steps": [
+    {
+     "name": "check_gpu",
+     "builtin": "check_gpu",
+     "always": true
+    },
+    {
+     "name": "setup_0",
+     "cmd": "cd {REPO}/data/py150 2>/dev/null && HF_HUB_OFFLINE=0 timeout 1h bash download_and_extract.sh; ls {REPO}/data/py150 | head"
+    }
+   ]
+  },
+  {
+   "name": "probe",
+   "description": "every documented entry point, README order, minimal sizes",
+   "depends": [
+    {
+     "stage": "setup",
+     "type": "afterany"
+    }
+   ],
+   "resources": {
+    "gpus": "h100_3g.40gb:1",
+    "cpus": 6,
+    "mem": "48G",
+    "time": "04:00:00"
+   },
+   "steps": [
+    {
+     "name": "env_python37_torch191",
+     "cmd": "python -c 'import sys; assert sys.version_info[:2]==(3,7), sys.version'"
+    },
+    {
+     "name": "env_vendored_transformers_4161",
+     "cmd": "cd {REPO}/transformers && pip install --no-index --no-deps -e . && python -c 'import transformers; print(transformers.__version__)'"
+    },
+    {
+     "name": "1_preprocess_py150",
+     "cmd": "cd {REPO}/data/py150 && timeout 1h python preprocess.py --base_dir=py150_files --output_dir=token_completion"
+    },
+    {
+     "name": "2_sft_codexglue_external",
+     "cmd": "test -f {REPO}/code/run_lm.py || test -d {REPO}/CodeXGLUE || (echo 'SFT step is external (CodeXGLUE); no script in the artefact'; exit 2)"
+    },
+    {
+     "name": "3_generate_score",
+     "cmd": "cd {REPO} && timeout 30m python generate_score.py --checkpoint_path PATH_OF_FINETUNED_GPT2 --mode score --model gpt2 --batch_size 1 --text_length 256 --min_query_len 10 --dataset_name data/final/jsonl --language python"
+    },
+    {
+     "name": "4_train_estimator",
+     "cmd": "cd {REPO} && timeout 30m python train_estimator.py --batch_size 8 --run_name probe --epoch 1 --data_path PATH_OF_GENERATED_DATASET --metric gpt2_bleu --language python"
+    },
+    {
+     "name": "5_train_rl",
+     "cmd": "cd {REPO} && timeout 30m python train.py --batch-size-per-replica=14 --grad-acc-steps=14 --epochs=1 --lr=5e-5 --tuning_mode=rl --model=gpt-2"
+    },
+    {
+     "name": "6_evaluator",
+     "cmd": "cd {REPO}/code && timeout 10m python evaluator.py -a=evaluator/answers.json -p=evaluator/predictions.json"
+    }
+   ]
+  },
+  {
+   "name": "collect",
+   "depends": [
+    {
+     "stage": "probe",
+     "type": "afterany"
+    }
+   ],
+   "resources": {
+    "gpus": "h100_1g.10gb:1",
+    "cpus": 2,
+    "mem": "8G",
+    "time": "01:00:00"
+   },
+   "steps": [
+    {
+     "name": "compare",
+     "cmd": "python {HPC}/compare.py {RESULTS} {HPC}/reported.csv",
+     "always": true
+    },
+    {
+     "name": "collect",
+     "builtin": "collect",
+     "always": true
+    }
+   ]
+  }
+ ],
+ "results": {
+  "tables": [
+   {
+    "name": "comparison",
+    "glob": "compare/comparison.csv"
+   }
+  ],
+  "copy": [
+   "compare/*"
+  ]
+ }
+}

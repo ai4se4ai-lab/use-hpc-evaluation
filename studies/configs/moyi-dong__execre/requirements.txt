@@ -1,0 +1,18 @@
+# pyproject/requirements of the artefact (unpinned >=); datasets < 4 because LiveCodeBench loads via a dataset script
+anthropic
+crowd-kit
+datasets==3.6.0
+diskcache
+httpx
+litellm
+loguru
+numpy<2.3
+openai
+pandas
+platformdirs
+pyyaml
+requests
+tenacity
+tqdm
+vllm
+huggingface_hub

@@ -1,0 +1,188 @@
+23854137|am2m_00_setup|CANCELLED by 3152398|2026-10-12T21:58:53|2026-10-12T21:59:24|2026-10-12T22:03:40|256|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g1
+23854138|am2m_10_matrix_qwen2.5-coder_7b_classeval|CANCELLED by 3152398|2026-10-12T21:58:54|None|2026-10-12T22:03:40|0||None assigned
+23854139|am2m_10_matrix_qwen2.5-coder_7b_humanevalplus|CANCELLED by 3152398|2026-10-12T21:58:55|None|2026-10-12T22:03:40|0||None assigned
+23854140|am2m_10_matrix_qwen2.5-coder_32b_classeval|CANCELLED by 3152398|2026-10-12T21:58:55|None|2026-10-12T22:03:40|0||None assigned
+23854141|am2m_10_matrix_qwen2.5-coder_32b_humanevalplus|CANCELLED by 3152398|2026-10-12T21:58:56|None|2026-10-12T22:03:40|0||None assigned
+23854142|am2m_10_matrix_devstral_24b_classeval|CANCELLED by 3152398|2026-10-12T21:58:56|None|2026-10-12T22:03:40|0||None assigned
+23854143|am2m_10_matrix_devstral_24b_humanevalplus|CANCELLED by 3152398|2026-10-12T21:58:57|None|2026-10-12T22:03:40|0||None assigned
+23854144|am2m_10_matrix_deepseek-coder-v2_16b_classeval|CANCELLED by 3152398|2026-10-12T21:58:57|None|2026-10-12T22:03:40|0||None assigned
+23854146|am2m_10_matrix_deepseek-coder-v2_16b_humanevalplus|CANCELLED by 3152398|2026-10-12T21:58:58|None|2026-10-12T22:03:40|0||None assigned
+23854147|am2m_10_matrix_granite-code_20b_classeval|CANCELLED by 3152398|2026-10-12T21:58:58|None|2026-10-12T22:03:40|0||None assigned
+23854148|am2m_10_matrix_granite-code_20b_humanevalplus|CANCELLED by 3152398|2026-10-12T21:58:59|None|2026-10-12T22:03:40|0||None assigned
+23854151|am2m_10_matrix_codellama_13b_classeval|CANCELLED by 3152398|2026-10-12T21:58:59|None|2026-10-12T22:03:40|0||None assigned
+23854152|am2m_10_matrix_codellama_13b_humanevalplus|CANCELLED by 3152398|2026-10-12T21:59:00|None|2026-10-12T22:03:40|0||None assigned
+23854153|am2m_10_matrix_starcoder2_15b_classeval|CANCELLED by 3152398|2026-10-12T21:59:00|None|2026-10-12T22:03:40|0||None assigned
+23854159|am2m_10_matrix_starcoder2_15b_humanevalplus|CANCELLED by 3152398|2026-10-12T21:59:01|None|2026-10-12T22:03:40|0||None assigned
+23854161|am2m_20_rq2_builder|CANCELLED by 3152398|2026-10-12T21:59:01|None|2026-10-12T22:03:40|0||None assigned
+23854162|am2m_21_rq4_ref_qwen2.5-coder_7b|CANCELLED by 3152398|2026-10-12T21:59:02|None|2026-10-12T22:03:40|0||None assigned
+23854163|am2m_21_rq4_ref_qwen2.5-coder_32b|CANCELLED by 3152398|2026-10-12T21:59:02|None|2026-10-12T22:03:40|0||None assigned
+23854164|am2m_21_rq4_ref_devstral_24b|CANCELLED by 3152398|2026-10-12T21:59:03|None|2026-10-12T22:03:40|0||None assigned
+23854165|am2m_30_rq2_llm|CANCELLED by 3152398|2026-10-12T21:59:03|None|2026-10-12T22:03:40|0||None assigned
+23854166|am2m_31_rq4_builder_qwen2.5-coder_32b|CANCELLED by 3152398|2026-10-12T21:59:04|None|2026-10-12T22:03:40|0||None assigned
+23854167|am2m_32_rq4_repair_qwen2.5-coder_7b|CANCELLED by 3152398|2026-10-12T21:59:04|None|2026-10-12T22:03:40|0||None assigned
+23854168|am2m_32_rq4_repair_qwen2.5-coder_32b|CANCELLED by 3152398|2026-10-12T21:59:05|None|2026-10-12T22:03:40|0||None assigned
+23854169|am2m_32_rq4_repair_devstral_24b|CANCELLED by 3152398|2026-10-12T21:59:05|None|2026-10-12T22:03:40|0||None assigned
+23854170|am2m_33_coding|CANCELLED by 3152398|2026-10-12T21:59:06|None|2026-10-12T22:03:40|0||None assigned
+23854171|am2m_40_analysis|CANCELLED by 3152398|2026-10-12T21:59:07|None|2026-10-12T22:03:40|0||None assigned
+23854407|am2m_00_setup|FAILED|2026-10-12T22:04:03|2026-10-12T22:07:21|2026-10-12T22:08:18|57|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g1
+23854438|am2m_10_matrix_qwen2.5-coder_7b_classeval|CANCELLED|2026-10-12T22:04:05|None|2026-10-12T22:08:23|0||None assigned
+23854440|am2m_10_matrix_qwen2.5-coder_7b_humanevalplus|CANCELLED|2026-10-12T22:04:05|None|2026-10-12T22:08:23|0||None assigned
+23854441|am2m_10_matrix_qwen2.5-coder_32b_classeval|CANCELLED|2026-10-12T22:04:07|None|2026-10-12T22:08:23|0||None assigned
+23854444|am2m_10_matrix_qwen2.5-coder_32b_humanevalplus|CANCELLED|2026-10-12T22:04:10|None|2026-10-12T22:08:23|0||None assigned
+23854446|am2m_10_matrix_devstral_24b_classeval|CANCELLED|2026-10-12T22:04:12|None|2026-10-12T22:08:23|0||None assigned
+23854449|am2m_10_matrix_devstral_24b_humanevalplus|CANCELLED|2026-10-12T22:04:13|None|2026-10-12T22:08:23|0||None assigned
+23854450|am2m_10_matrix_deepseek-coder-v2_16b_classeval|CANCELLED|2026-10-12T22:04:15|None|2026-10-12T22:08:23|0||None assigned
+23854452|am2m_10_matrix_deepseek-coder-v2_16b_humanevalplus|CANCELLED|2026-10-12T22:04:17|None|2026-10-12T22:08:23|0||None assigned
+23854453|am2m_10_matrix_granite-code_20b_classeval|CANCELLED|2026-10-12T22:04:20|None|2026-10-12T22:08:23|0||None assigned
+23854454|am2m_10_matrix_granite-code_20b_humanevalplus|CANCELLED|2026-10-12T22:04:21|None|2026-10-12T22:08:23|0||None assigned
+23854455|am2m_10_matrix_codellama_13b_classeval|CANCELLED|2026-10-12T22:04:22|None|2026-10-12T22:08:23|0||None assigned
+23854456|am2m_10_matrix_codellama_13b_humanevalplus|CANCELLED|2026-10-12T22:04:22|None|2026-10-12T22:08:23|0||None assigned
+23854457|am2m_10_matrix_starcoder2_15b_classeval|CANCELLED|2026-10-12T22:04:23|None|2026-10-12T22:08:23|0||None assigned
+23854459|am2m_10_matrix_starcoder2_15b_humanevalplus|CANCELLED|2026-10-12T22:04:23|None|2026-10-12T22:08:23|0||None assigned
+23854460|am2m_20_rq2_builder|CANCELLED|2026-10-12T22:04:24|None|2026-10-12T22:08:23|0||None assigned
+23854461|am2m_21_rq4_ref_qwen2.5-coder_7b|CANCELLED|2026-10-12T22:04:24|None|2026-10-12T22:08:23|0||None assigned
+23854462|am2m_21_rq4_ref_qwen2.5-coder_32b|CANCELLED|2026-10-12T22:04:25|None|2026-10-12T22:08:23|0||None assigned
+23854463|am2m_21_rq4_ref_devstral_24b|CANCELLED|2026-10-12T22:04:25|None|2026-10-12T22:08:23|0||None assigned
+23854464|am2m_30_rq2_llm|CANCELLED|2026-10-12T22:04:26|None|2026-10-12T22:08:23|0||None assigned
+23854465|am2m_31_rq4_builder_qwen2.5-coder_32b|CANCELLED|2026-10-12T22:04:26|None|2026-10-12T22:08:23|0||None assigned
+23854466|am2m_32_rq4_repair_qwen2.5-coder_7b|CANCELLED|2026-10-12T22:04:26|None|2026-10-12T22:08:23|0||None assigned
+23854467|am2m_32_rq4_repair_qwen2.5-coder_32b|CANCELLED|2026-10-12T22:04:26|None|2026-10-12T22:08:23|0||None assigned
+23854468|am2m_32_rq4_repair_devstral_24b|CANCELLED|2026-10-12T22:04:27|None|2026-10-12T22:08:23|0||None assigned
+23854469|am2m_33_coding|CANCELLED|2026-10-12T22:04:27|None|2026-10-12T22:08:23|0||None assigned
+23854472|am2m_40_analysis|CANCELLED|2026-10-12T22:04:27|None|2026-10-12T22:08:23|0||None assigned
+23854680|am2m_00_setup|CANCELLED by 3152398|2026-10-12T22:10:00|2026-10-12T22:11:30|2026-10-12T22:26:02|872|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g1
+23854681|am2m_10_matrix_qwen2.5-coder_7b_classeval|CANCELLED by 3152398|2026-10-12T22:10:00|None|2026-10-12T22:26:02|0||None assigned
+23854682|am2m_10_matrix_qwen2.5-coder_7b_humanevalplus|CANCELLED by 3152398|2026-10-12T22:10:00|None|2026-10-12T22:26:02|0||None assigned
+23854683|am2m_10_matrix_qwen2.5-coder_32b_classeval|CANCELLED by 3152398|2026-10-12T22:10:01|None|2026-10-12T22:26:02|0||None assigned
+23854684|am2m_10_matrix_qwen2.5-coder_32b_humanevalplus|CANCELLED by 3152398|2026-10-12T22:10:02|None|2026-10-12T22:26:02|0||None assigned
+23854685|am2m_10_matrix_devstral_24b_classeval|CANCELLED by 3152398|2026-10-12T22:10:02|None|2026-10-12T22:26:02|0||None assigned
+23854686|am2m_10_matrix_devstral_24b_humanevalplus|CANCELLED by 3152398|2026-10-12T22:10:02|None|2026-10-12T22:26:02|0||None assigned
+23854687|am2m_10_matrix_deepseek-coder-v2_16b_classeval|CANCELLED by 3152398|2026-10-12T22:10:03|None|2026-10-12T22:26:02|0||None assigned
+23854688|am2m_10_matrix_deepseek-coder-v2_16b_humanevalplus|CANCELLED by 3152398|2026-10-12T22:10:03|None|2026-10-12T22:26:02|0||None assigned
+23854689|am2m_10_matrix_granite-code_20b_classeval|CANCELLED by 3152398|2026-10-12T22:10:03|None|2026-10-12T22:26:02|0||None assigned
+23854692|am2m_10_matrix_granite-code_20b_humanevalplus|CANCELLED by 3152398|2026-10-12T22:10:04|None|2026-10-12T22:26:02|0||None assigned
+23854693|am2m_10_matrix_codellama_13b_classeval|CANCELLED by 3152398|2026-10-12T22:10:04|None|2026-10-12T22:26:02|0||None assigned
+23854694|am2m_10_matrix_codellama_13b_humanevalplus|CANCELLED by 3152398|2026-10-12T22:10:04|None|2026-10-12T22:26:02|0||None assigned
+23854696|am2m_10_matrix_starcoder2_15b_classeval|CANCELLED by 3152398|2026-10-12T22:10:05|None|2026-10-12T22:26:02|0||None assigned
+23854697|am2m_10_matrix_starcoder2_15b_humanevalplus|CANCELLED by 3152398|2026-10-12T22:10:05|None|2026-10-12T22:26:02|0||None assigned
+23854698|am2m_20_rq2_builder|CANCELLED by 3152398|2026-10-12T22:10:06|None|2026-10-12T22:26:02|0||None assigned
+23854699|am2m_21_rq4_ref_qwen2.5-coder_7b|CANCELLED by 3152398|2026-10-12T22:10:07|None|2026-10-12T22:26:02|0||None assigned
+23854700|am2m_21_rq4_ref_qwen2.5-coder_32b|CANCELLED by 3152398|2026-10-12T22:10:07|None|2026-10-12T22:26:02|0||None assigned
+23854701|am2m_21_rq4_ref_devstral_24b|CANCELLED by 3152398|2026-10-12T22:10:08|None|2026-10-12T22:26:02|0||None assigned
+23854702|am2m_30_rq2_llm|CANCELLED by 3152398|2026-10-12T22:10:09|None|2026-10-12T22:26:02|0||None assigned
+23854703|am2m_31_rq4_builder_qwen2.5-coder_32b|CANCELLED by 3152398|2026-10-12T22:10:09|None|2026-10-12T22:26:02|0||None assigned
+23854704|am2m_32_rq4_repair_qwen2.5-coder_7b|CANCELLED by 3152398|2026-10-12T22:10:10|None|2026-10-12T22:26:02|0||None assigned
+23854705|am2m_32_rq4_repair_qwen2.5-coder_32b|CANCELLED by 3152398|2026-10-12T22:10:10|None|2026-10-12T22:26:02|0||None assigned
+23854706|am2m_32_rq4_repair_devstral_24b|CANCELLED by 3152398|2026-10-12T22:10:11|None|2026-10-12T22:26:02|0||None assigned
+23854707|am2m_33_coding|CANCELLED by 3152398|2026-10-12T22:10:11|None|2026-10-12T22:26:02|0||None assigned
+23854708|am2m_40_analysis|CANCELLED by 3152398|2026-10-12T22:10:12|None|2026-10-12T22:26:02|0||None assigned
+23855186|am2m_00_setup|FAILED|2026-10-12T22:26:16|2026-10-12T22:27:48|2026-10-12T22:44:11|983|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g1
+23855187|am2m_10_matrix_qwen2.5-coder_7b_classeval|CANCELLED|2026-10-12T22:26:17|None|2026-10-12T22:44:14|0||None assigned
+23855188|am2m_10_matrix_qwen2.5-coder_7b_humanevalplus|CANCELLED|2026-10-12T22:26:17|None|2026-10-12T22:44:14|0||None assigned
+23855189|am2m_10_matrix_qwen2.5-coder_32b_classeval|CANCELLED|2026-10-12T22:26:18|None|2026-10-12T22:44:14|0||None assigned
+23855190|am2m_10_matrix_qwen2.5-coder_32b_humanevalplus|CANCELLED|2026-10-12T22:26:18|None|2026-10-12T22:44:14|0||None assigned
+23855191|am2m_10_matrix_devstral_24b_classeval|CANCELLED|2026-10-12T22:26:18|None|2026-10-12T22:44:14|0||None assigned
+23855192|am2m_10_matrix_devstral_24b_humanevalplus|CANCELLED|2026-10-12T22:26:19|None|2026-10-12T22:44:14|0||None assigned
+23855193|am2m_10_matrix_deepseek-coder-v2_16b_classeval|CANCELLED|2026-10-12T22:26:19|None|2026-10-12T22:44:14|0||None assigned
+23855194|am2m_10_matrix_deepseek-coder-v2_16b_humanevalplus|CANCELLED|2026-10-12T22:26:19|None|2026-10-12T22:44:14|0||None assigned
+23855195|am2m_10_matrix_granite-code_20b_classeval|CANCELLED|2026-10-12T22:26:19|None|2026-10-12T22:44:14|0||None assigned
+23855196|am2m_10_matrix_granite-code_20b_humanevalplus|CANCELLED|2026-10-12T22:26:19|None|2026-10-12T22:44:14|0||None assigned
+23855197|am2m_10_matrix_codellama_13b_classeval|CANCELLED|2026-10-12T22:26:19|None|2026-10-12T22:44:14|0||None assigned
+23855198|am2m_10_matrix_codellama_13b_humanevalplus|CANCELLED|2026-10-12T22:26:19|None|2026-10-12T22:44:14|0||None assigned
+23855199|am2m_10_matrix_starcoder2_15b_classeval|CANCELLED|2026-10-12T22:26:20|None|2026-10-12T22:44:14|0||None assigned
+23855200|am2m_10_matrix_starcoder2_15b_humanevalplus|CANCELLED|2026-10-12T22:26:20|None|2026-10-12T22:44:14|0||None assigned
+23855201|am2m_20_rq2_builder|CANCELLED|2026-10-12T22:26:20|None|2026-10-12T22:44:14|0||None assigned
+23855202|am2m_21_rq4_ref_qwen2.5-coder_7b|CANCELLED|2026-10-12T22:26:20|None|2026-10-12T22:44:14|0||None assigned
+23855203|am2m_21_rq4_ref_qwen2.5-coder_32b|CANCELLED|2026-10-12T22:26:20|None|2026-10-12T22:44:14|0||None assigned
+23855204|am2m_21_rq4_ref_devstral_24b|CANCELLED|2026-10-12T22:26:21|None|2026-10-12T22:44:14|0||None assigned
+23855205|am2m_30_rq2_llm|CANCELLED|2026-10-12T22:26:21|None|2026-10-12T22:44:14|0||None assigned
+23855206|am2m_31_rq4_builder_qwen2.5-coder_32b|CANCELLED|2026-10-12T22:26:22|None|2026-10-12T22:44:14|0||None assigned
+23855207|am2m_32_rq4_repair_qwen2.5-coder_7b|CANCELLED|2026-10-12T22:26:22|None|2026-10-12T22:44:14|0||None assigned
+23855208|am2m_32_rq4_repair_qwen2.5-coder_32b|CANCELLED|2026-10-12T22:26:23|None|2026-10-12T22:44:14|0||None assigned
+23855209|am2m_32_rq4_repair_devstral_24b|CANCELLED|2026-10-12T22:26:23|None|2026-10-12T22:44:14|0||None assigned
+23855210|am2m_33_coding|CANCELLED|2026-10-12T22:26:24|None|2026-10-12T22:44:14|0||None assigned
+23855211|am2m_40_analysis|CANCELLED|2026-10-12T22:26:24|None|2026-10-12T22:44:14|0||None assigned
+23857760|am2m_00_setup|FAILED|2026-10-12T23:28:45|2026-10-12T23:29:43|2026-10-12T23:30:38|55|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g2
+23857761|am2m_10_matrix_qwen2.5-coder_7b_classeval|CANCELLED|2026-10-12T23:28:45|None|2026-10-12T23:30:41|0||None assigned
+23857762|am2m_10_matrix_qwen2.5-coder_7b_humanevalplus|CANCELLED|2026-10-12T23:28:45|None|2026-10-12T23:30:41|0||None assigned
+23857763|am2m_10_matrix_qwen2.5-coder_32b_classeval|CANCELLED|2026-10-12T23:28:45|None|2026-10-12T23:30:41|0||None assigned
+23857764|am2m_10_matrix_qwen2.5-coder_32b_humanevalplus|CANCELLED|2026-10-12T23:28:45|None|2026-10-12T23:30:41|0||None assigned
+23857765|am2m_10_matrix_devstral_24b_classeval|CANCELLED|2026-10-12T23:28:45|None|2026-10-12T23:30:41|0||None assigned
+23857766|am2m_10_matrix_devstral_24b_humanevalplus|CANCELLED|2026-10-12T23:28:45|None|2026-10-12T23:30:41|0||None assigned
+23857767|am2m_10_matrix_deepseek-coder-v2_16b_classeval|CANCELLED|2026-10-12T23:28:45|None|2026-10-12T23:30:41|0||None assigned
+23857768|am2m_10_matrix_deepseek-coder-v2_16b_humanevalplus|CANCELLED|2026-10-12T23:28:45|None|2026-10-12T23:30:41|0||None assigned
+23857769|am2m_10_matrix_granite-code_20b_classeval|CANCELLED|2026-10-12T23:28:45|None|2026-10-12T23:30:41|0||None assigned
+23857770|am2m_10_matrix_granite-code_20b_humanevalplus|CANCELLED|2026-10-12T23:28:45|None|2026-10-12T23:30:41|0||None assigned
+23857771|am2m_10_matrix_codellama_13b_classeval|CANCELLED|2026-10-12T23:28:46|None|2026-10-12T23:30:41|0||None assigned
+23857772|am2m_10_matrix_codellama_13b_humanevalplus|CANCELLED|2026-10-12T23:28:46|None|2026-10-12T23:30:41|0||None assigned
+23857773|am2m_10_matrix_starcoder2_15b_classeval|CANCELLED|2026-10-12T23:28:46|None|2026-10-12T23:30:41|0||None assigned
+23857774|am2m_10_matrix_starcoder2_15b_humanevalplus|CANCELLED|2026-10-12T23:28:46|None|2026-10-12T23:30:41|0||None assigned
+23857775|am2m_20_rq2_builder|CANCELLED|2026-10-12T23:28:46|None|2026-10-12T23:30:41|0||None assigned
+23857776|am2m_21_rq4_ref_qwen2.5-coder_7b|CANCELLED|2026-10-12T23:28:46|None|2026-10-12T23:30:41|0||None assigned
+23857777|am2m_21_rq4_ref_qwen2.5-coder_32b|CANCELLED|2026-10-12T23:28:46|None|2026-10-12T23:30:41|0||None assigned
+23857778|am2m_21_rq4_ref_devstral_24b|CANCELLED|2026-10-12T23:28:46|None|2026-10-12T23:30:41|0||None assigned
+23857779|am2m_30_rq2_llm|CANCELLED|2026-10-12T23:28:46|None|2026-10-12T23:30:41|0||None assigned
+23857780|am2m_31_rq4_builder_qwen2.5-coder_32b|CANCELLED|2026-10-12T23:28:46|None|2026-10-12T23:30:41|0||None assigned
+23857781|am2m_32_rq4_repair_qwen2.5-coder_7b|CANCELLED|2026-10-12T23:28:46|None|2026-10-12T23:30:41|0||None assigned
+23857782|am2m_32_rq4_repair_qwen2.5-coder_32b|CANCELLED|2026-10-12T23:28:46|None|2026-10-12T23:30:41|0||None assigned
+23857783|am2m_32_rq4_repair_devstral_24b|CANCELLED|2026-10-12T23:28:46|None|2026-10-12T23:30:41|0||None assigned
+23857784|am2m_33_coding|CANCELLED|2026-10-12T23:28:46|None|2026-10-12T23:30:41|0||None assigned
+23857785|am2m_40_analysis|CANCELLED|2026-10-12T23:28:47|None|2026-10-12T23:30:41|0||None assigned
+23858312|am2m_00_setup|COMPLETED|2026-10-12T23:41:57|2026-10-12T23:42:20|2026-10-12T23:46:15|235|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g2
+23858313|am2m_10_matrix_qwen2.5-coder_7b_classeval|COMPLETED|2026-10-12T23:41:57|2026-10-12T23:46:18|2026-10-12T23:53:13|415|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g1
+23858314|am2m_10_matrix_qwen2.5-coder_7b_humanevalplus|COMPLETED|2026-10-12T23:41:57|2026-10-12T23:46:18|2026-10-12T23:49:51|213|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g2
+23858315|am2m_20_rq2_builder|COMPLETED|2026-10-12T23:41:57|2026-10-12T23:46:18|2026-10-12T23:52:46|388|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g3
+23858316|am2m_21_rq4_ref_qwen2.5-coder_7b|COMPLETED|2026-10-12T23:41:57|2026-10-12T23:46:18|2026-10-12T23:58:45|747|billing=24400,cpu=12,gres/gpu:h100=2,gres/gpu=2,mem=96G,node=1|g1
+23858317|am2m_30_rq2_llm|COMPLETED|2026-10-12T23:41:57|2026-10-12T23:54:39|2026-10-12T23:57:23|164|billing=24400,cpu=12,gres/gpu:h100=2,gres/gpu=2,mem=96G,node=1|g10
+23858318|am2m_31_rq4_builder_qwen2.5-coder_7b|COMPLETED|2026-10-12T23:41:57|2026-10-12T23:54:39|2026-10-12T23:58:21|222|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g12
+23858319|am2m_32_rq4_repair_qwen2.5-coder_7b|COMPLETED|2026-10-12T23:41:57|2026-10-12T23:54:39|2026-10-12T23:57:13|154|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g24
+23858320|am2m_33_coding|COMPLETED|2026-10-12T23:41:57|2026-10-12T23:54:39|2026-10-12T23:59:26|287|billing=24400,cpu=12,gres/gpu:h100=2,gres/gpu=2,mem=96G,node=1|g10
+23858321|am2m_40_analysis|COMPLETED|2026-10-12T23:41:57|2026-10-12T23:59:29|2026-10-13T00:00:08|39|billing=8000,cpu=4,mem=32G,node=1|c340
+23860808|am2m_00_setup|CANCELLED by 3152398|2026-10-13T00:21:45|2026-10-13T00:23:23|2026-10-13T01:02:19|2336|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g2
+23862427|am2m_00_setup|COMPLETED|2026-10-13T01:02:46|2026-10-13T01:06:03|2026-10-13T02:20:21|4458|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g2
+23865973|am2m_00_setup|COMPLETED|2026-10-13T02:51:37|2026-10-13T02:51:59|2026-10-13T02:55:40|221|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g1
+23865974|am2m_10_matrix_qwen2.5-coder_7b_classeval|COMPLETED|2026-10-13T02:51:37|2026-10-13T02:59:30|2026-10-13T03:05:36|366|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g1
+23865975|am2m_10_matrix_qwen2.5-coder_7b_humanevalplus|COMPLETED|2026-10-13T02:51:38|2026-10-13T02:59:30|2026-10-13T03:03:11|221|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g20
+23865977|am2m_20_rq2_builder|COMPLETED|2026-10-13T02:51:38|2026-10-13T02:59:30|2026-10-13T03:05:41|371|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g29
+23865978|am2m_21_rq4_ref_qwen2.5-coder_7b|COMPLETED|2026-10-13T02:51:38|2026-10-13T02:59:30|2026-10-13T03:14:22|892|billing=24400,cpu=12,gres/gpu:h100=2,gres/gpu=2,mem=96G,node=1|g18
+23865979|am2m_30_rq2_llm|COMPLETED|2026-10-13T02:51:38|2026-10-13T03:07:18|2026-10-13T03:09:16|118|billing=24400,cpu=24,gres/gpu:h100=2,gres/gpu=2,mem=192G,node=2|g[1-2]
+23865980|am2m_31_rq4_builder_qwen2.5-coder_7b|COMPLETED|2026-10-13T02:51:38|2026-10-13T03:11:13|2026-10-13T03:15:35|262|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g1
+23865981|am2m_32_rq4_repair_qwen2.5-coder_7b|COMPLETED|2026-10-13T02:51:38|2026-10-13T03:11:13|2026-10-13T03:14:45|212|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g2
+23865982|am2m_33_coding|COMPLETED|2026-10-13T02:51:38|2026-10-13T03:07:18|2026-10-13T03:12:15|297|billing=24400,cpu=24,gres/gpu:h100=2,gres/gpu=2,mem=192G,node=2|g[26,29]
+23865983|am2m_40_analysis|COMPLETED|2026-10-13T02:51:38|2026-10-13T03:15:38|2026-10-13T03:16:20|42|billing=8000,cpu=4,mem=32G,node=1|c370
+23866894|am2m_00_setup|COMPLETED|2026-10-13T03:19:19|2026-10-13T03:23:10|2026-10-13T03:26:54|224|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g1
+23866895|am2m_10_matrix_qwen2.5-coder_7b_classeval|COMPLETED|2026-10-13T03:19:19|2026-10-13T03:27:03|2026-10-13T03:33:18|375|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g1
+23866896|am2m_10_matrix_qwen2.5-coder_7b_humanevalplus|COMPLETED|2026-10-13T03:19:19|2026-10-13T03:27:03|2026-10-13T03:30:24|201|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g3
+23866897|am2m_20_rq2_builder|COMPLETED|2026-10-13T03:19:19|2026-10-13T03:27:03|2026-10-13T03:31:32|269|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g18
+23866898|am2m_21_rq4_ref_qwen2.5-coder_7b|COMPLETED|2026-10-13T03:19:19|2026-10-13T03:27:03|2026-10-13T03:40:28|805|billing=24400,cpu=12,gres/gpu:h100=2,gres/gpu=2,mem=96G,node=1|g18
+23866899|am2m_30_rq2_llm|COMPLETED|2026-10-13T03:19:21|2026-10-13T03:34:40|2026-10-13T03:36:43|123|billing=24400,cpu=12,gres/gpu:h100=2,gres/gpu=2,mem=96G,node=1|g18
+23866900|am2m_31_rq4_builder_qwen2.5-coder_7b|COMPLETED|2026-10-13T03:19:22|2026-10-13T03:34:40|2026-10-13T03:37:44|184|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g27
+23866911|am2m_32_rq4_repair_qwen2.5-coder_7b|COMPLETED|2026-10-13T03:19:24|2026-10-13T03:38:31|2026-10-13T03:40:59|148|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g15
+23866912|am2m_33_coding|COMPLETED|2026-10-13T03:19:24|2026-10-13T03:34:40|2026-10-13T03:39:26|286|billing=24400,cpu=24,gres/gpu:h100=2,gres/gpu=2,mem=192G,node=2|g[3,18]
+23866913|am2m_40_analysis|COMPLETED|2026-10-13T03:19:24|2026-10-13T03:41:02|2026-10-13T03:41:43|41|billing=8000,cpu=4,mem=32G,node=1|c63
+23880879|am2m_00_setup|COMPLETED|2026-10-13T09:54:22|2026-10-13T09:58:05|2026-10-13T10:08:32|627|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g25
+23880880|am2m_10_matrix_qwen2.5-coder_7b_classeval|RUNNING|2026-10-13T09:54:22|2026-10-13T10:15:25|Unknown|10099|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g21
+23880881|am2m_10_matrix_qwen2.5-coder_7b_humanevalplus|RUNNING|2026-10-13T09:54:22|2026-10-13T10:15:25|Unknown|10099|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g21
+23880882|am2m_10_matrix_qwen2.5-coder_32b_classeval|RUNNING|2026-10-13T09:54:22|2026-10-13T10:15:25|Unknown|10099|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g26
+23880883|am2m_10_matrix_qwen2.5-coder_32b_humanevalplus|RUNNING|2026-10-13T09:54:24|2026-10-13T10:15:25|Unknown|10099|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g26
+23880885|am2m_10_matrix_devstral_24b_classeval|RUNNING|2026-10-13T09:54:24|2026-10-13T10:24:00|Unknown|9584|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g11
+23880888|am2m_10_matrix_devstral_24b_humanevalplus|RUNNING|2026-10-13T09:54:25|2026-10-13T10:24:00|Unknown|9584|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g26
+23880890|am2m_10_matrix_deepseek-coder-v2_16b_classeval|RUNNING|2026-10-13T09:54:27|2026-10-13T10:24:00|Unknown|9584|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g26
+23880892|am2m_10_matrix_deepseek-coder-v2_16b_humanevalplus|RUNNING|2026-10-13T09:54:27|2026-10-13T10:24:00|Unknown|9584|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g29
+23880894|am2m_10_matrix_granite-code_20b_classeval|RUNNING|2026-10-13T09:54:27|2026-10-13T10:28:15|Unknown|9329|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g18
+23880895|am2m_10_matrix_granite-code_20b_humanevalplus|RUNNING|2026-10-13T09:54:27|2026-10-13T10:28:15|Unknown|9329|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g21
+23880896|am2m_10_matrix_codellama_13b_classeval|RUNNING|2026-10-13T09:54:29|2026-10-13T10:28:15|Unknown|9329|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g25
+23880898|am2m_10_matrix_codellama_13b_humanevalplus|RUNNING|2026-10-13T09:54:29|2026-10-13T10:28:15|Unknown|9329|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g26
+23880901|am2m_10_matrix_starcoder2_15b_classeval|RUNNING|2026-10-13T09:54:29|2026-10-13T10:28:15|Unknown|9329|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g26
+23880902|am2m_10_matrix_starcoder2_15b_humanevalplus|RUNNING|2026-10-13T09:54:30|2026-10-13T10:32:32|Unknown|9072|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g8
+23880904|am2m_20_rq2_builder|COMPLETED|2026-10-13T09:54:30|2026-10-13T10:32:32|2026-10-13T11:41:11|4119|billing=12200,cpu=12,gres/gpu:h100=1,gres/gpu=1,mem=64G,node=1|g26
+23880906|am2m_21_rq4_ref_qwen2.5-coder_7b|COMPLETED|2026-10-13T09:54:32|2026-10-13T10:11:15|2026-10-13T11:39:01|5266|billing=24400,cpu=12,gres/gpu:h100=2,gres/gpu=2,mem=96G,node=1|g21
+23880908|am2m_21_rq4_ref_qwen2.5-coder_32b|RUNNING|2026-10-13T09:54:32|2026-10-13T10:11:15|Unknown|10349|billing=24400,cpu=24,gres/gpu:h100=2,gres/gpu=2,mem=192G,node=2|g[3,25]
+23880909|am2m_21_rq4_ref_devstral_24b|COMPLETED|2026-10-13T09:54:32|2026-10-13T10:15:25|2026-10-13T12:28:05|7960|billing=24400,cpu=12,gres/gpu:h100=2,gres/gpu=2,mem=96G,node=1|g21
+23880910|am2m_30_rq2_llm|PENDING|2026-10-13T09:54:32|Unknown|Unknown|0||None assigned
+23880926|am2m_31_rq4_builder_qwen2.5-coder_32b|PENDING|2026-10-13T09:54:34|Unknown|Unknown|0||None assigned
+23880927|am2m_32_rq4_repair_qwen2.5-coder_7b|PENDING|2026-10-13T09:54:34|Unknown|Unknown|0||None assigned
+23880928|am2m_32_rq4_repair_qwen2.5-coder_32b|PENDING|2026-10-13T09:54:34|Unknown|Unknown|0||None assigned
+23880929|am2m_32_rq4_repair_devstral_24b|PENDING|2026-10-13T09:54:35|Unknown|Unknown|0||None assigned
+23880930|am2m_33_coding|PENDING|2026-10-13T09:54:35|Unknown|Unknown|0||None assigned
+23880932|am2m_40_analysis|PENDING|2026-10-13T09:54:37|Unknown|Unknown|0||None assigned

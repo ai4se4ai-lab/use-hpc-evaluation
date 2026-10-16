@@ -1,0 +1,3 @@
+key,metric,reported,tolerance,source,comparable
+qwen2.5-7b|all systems,performance-model accuracy with LLM4Perf samples,,,RQ1 tables,evaluation code missing from the artefact (sampler only)
+qwen2.5-32b|all systems,performance-model accuracy with LLM4Perf samples,,,RQ1 tables,evaluation code missing from the artefact (sampler only)

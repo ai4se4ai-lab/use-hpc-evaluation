@@ -1,0 +1,11 @@
+id,name,mode,stages,steps,config_loc,glue_loc,hooks
+R1,SemGuard,probe,3,12,149,0,0
+R2,ProvenanceGuard,full,3,6,162,0,1
+R3,RetriGen,full,4,14,130,42,2
+R4,ExeCRE,full,4,9,225,18,2
+R5,EffiSkel,probe,3,15,161,0,0
+R6,BinarySPD,full,3,7,164,0,1
+R7,IRCoCo,probe,3,12,149,0,0
+R8,RobustExt,full,3,8,116,45,0
+R9,LLM4Perf,full,3,5,54,0,2
+R10,LogReasoner,probe,3,9,137,0,0

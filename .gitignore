@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments (create with `virtualenv --no-download`)
+.venv/
+venv/
+env/
+ENV/
+
+# Large or machine-specific work files: PDFs, clones, runs live in $REPRO_WORK (scratch), never here
+work/
+clones/
+repos/
+runs/
+wheels/
+hf_cache/
+*.pdf
+!docs/**/figures/*.pdf
+*.txt.gz
+
+# use-hpc run outputs if a pipeline is scaffolded inside this repository
+hpc/logs/
+hpc/results/
+slurm-*.out
+slurm-*.err
+
+# LaTeX build files (the papers live in docs/)
+docs/**/*.aux
+docs/**/*.bbl
+docs/**/*.blg
+docs/**/*.fdb_latexmk
+docs/**/*.fls
+docs/**/*.log
+docs/**/*.out
+docs/**/*.synctex.gz
+docs/**/*.toc
+docs/**/*.xcb
+docs/**/*.xmpi
+
+# Secrets and editors
+.env
+*.key
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Claude Code local state
+.claude/settings.local.json

@@ -1,0 +1,25 @@
+repo,decision,failed_criterion,reason,models,reproduced_subset
+zju-ctag/realistictritonbench,exclude,M2,evaluation runs in Docker containers (not available on the cluster),,
+open-compass/opencompass,exclude,M0,third-party evaluation toolkit used by the paper (not the paper's own artefact),,
+hiyouga/llama-efficient-tuning,exclude,M0,third-party fine-tuning framework (LlamaFactory) used by the paper,,
+ghabix/rust-swe-bench,exclude,M2,SWE-bench-style evaluation harness builds Docker images per instance,,
+wwwql/semguard,include,,"open-weight code LLMs <=7B; data on Google Drive; training, evaluator and generation scripts",DeepSeek-Coder-1.3B/6.7B; CodeLlama-7B; StarCoder2-7B; Qwen2.5-Coder-7B,SemGuard vs. greedy decoding on MBPP (pass@1)
+cmu-soda/provenanceguard,include,,Qwen-3.5-9B served locally with vLLM; precomputed plans and labels in the repository,Qwen-3.5-9B,ProvenanceGuard and single-step baselines on WorkBench and Agent SafetyBench with Qwen-3.5-9B
+isenglab/retrigen,include,,CodeLlama-7B embeddings via Ollama plus CodeT5 fine-tuning; result predictions shipped,CodeLlama-7B (Ollama); CodeT5-base,RetriGen assertion-generation accuracy and CodeBLEU
+paul-gauthier/aider,exclude,M0,third-party coding assistant used by the paper,,
+sailresearch/hafix-history-augmented-llms-for-bug-fixing,exclude,M2,model serving and BugsInPy/Defects4J evaluation run in Docker containers,,
+moyi-dong/execre,include,,paper reports Qwen2.5-Coder-32B-Instruct and Llama-3.1-8B-Instruct (served locally behind an OpenAI-compatible API); LiveCodeBench on Hugging Face,Qwen2.5-Coder-32B-Instruct; Llama-3.1-8B-Instruct,ExeCRE vs. base and brute-force self-correction on LiveCodeBench
+yyyy-yuyu/effiskel,include,,LoRA fine-tuning of 1.5B-7B code LLMs; data on Google Drive; per-model result tables,Qwen2.5-Coder-1.5B/7B; StarCoder2-3B; DeepSeek-Coder-6.7B; CodeLlama-7B,EffiSkel vs. base fine-tuning on the efficiency benchmark with one base model
+afifaniks/blagent,exclude,M4,main configuration uses gpt-oss:120b (> 34B),,
+unclecode/crawl4ai,exclude,M0,third-party web crawler used by the paper,,
+anonauthors123/llm-for-binary-spd,include,,19 open code LLMs and LoRA fine-tuning; datasets shipped as archives in the repository,Qwen2.5-Coder; StarCoder2-7B; Magicoder-6.7B; Llama-3-8B (<= 8B),LoRA fine-tuning on the pseudo-code dataset for a subset of models (accuracy/F1/FPR)
+modelscope/agentevolver,exclude,M0,third-party framework linked by the paper (not its artefact),,
+libolun-star/ircoco,include,,RL fine-tuning of pre-trained code models (<= 1.3B) on Py150/Java; public data,CodeGPT/GPT-2; GPT-Neo-125M/1.3B; CodeT5,IRCoCo vs. SFT on Py150 token-level completion for one model
+deepsoftwareanalytics/swe-factory,exclude,M2,environment construction and validation run in Docker,,
+jie-jw-wu/ope-agent,exclude,M1,reported experiments use Gemini/Mistral APIs; no open-weight result,,
+frabbisw/robustextended,include,,open code LLMs 1B-7B; nominal and perturbed HumanEval in the repository,CodeGen-2B/6B-multi; InCoder-1B/6B; Magicoder-7B; Qwen2.5-Coder,Nominal vs. perturbed HumanEval pass@1 for a subset of models
+klsc749/llm4perf,include,,Qwen2.5 and Llama run locally with Ollama; measured performance dataset in the repository,Qwen2.5-7B/32B (Ollama),LLM4Perf sampling quality with Qwen2.5-7B/32B on the shipped systems
+xiaozheng03asada/translibeval,exclude,M6,"SCREENING CORRECTION after cloning: the open-weight models (Llama3-8B, CodeLlama-7B) are called through the paid Baidu Qianfan API (qianfan.Completion), not locally",,
+cgcl-codes/naturalcc,exclude,M0,"the lab's general toolkit (NaturalCC), not the paper's artefact",,
+smat-lab/mazebreaker,exclude,M6,mutator and judge agents are gpt-4o-mini (paid API) in every reported configuration,,
+leaperovo/logreasoner,include,,SFT/DPO data (including GPT-4o corrections) shipped; open models fine-tuned with LLaMA-Factory and evaluated with vLLM,Llama-3-8B-Instruct; Qwen-2.5-7B,"LDSM task: SFT + DPO of Llama-3-8B-Instruct, vLLM inference (documented chain)"

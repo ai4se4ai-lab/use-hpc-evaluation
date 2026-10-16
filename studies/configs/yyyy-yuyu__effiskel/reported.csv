@@ -1,0 +1,11 @@
+key,metric,reported,tolerance,source,comparable
+env_requirements_txt,exit_code,0,0,README step,yes
+env_vendored_transformers,exit_code,0,0,README step,yes
+1_SMS,exit_code,0,0,README step,yes
+1_SSS,exit_code,0,0,README step,yes
+1_TAS,exit_code,0,0,README step,yes
+2_train_base,exit_code,0,0,README step,yes
+2_train_skeleton,exit_code,0,0,README step,yes
+3_generate_skeleton,exit_code,0,0,README step,yes
+4_test_one_solution,exit_code,0,0,README step,yes
+deepseek-coder-6.7b|mercury,efficiency/correctness,,,Tables (EffiSkel),evaluated only if the documented chain runs (see probe)

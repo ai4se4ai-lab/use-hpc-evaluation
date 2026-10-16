@@ -1,0 +1,7 @@
+key,metric,reported,tolerance,source,comparable
+env_requirements,exit_code,0,0,README step,yes
+env_llamafactory,exit_code,0,0,README step,yes
+1_sft_ldsm,exit_code,0,0,README step,yes
+2_dpo,exit_code,0,0,README step,yes
+3_inference_vllm,exit_code,0,0,README step,yes
+llama3-8b|ldsm,accuracy/F1,,,Tables (LogReasoner),evaluated only if the documented chain runs (see probe)

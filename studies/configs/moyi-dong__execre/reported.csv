@@ -1,0 +1,7 @@
+key,metric,reported,tolerance,source,comparable
+qwen32b|base,pass@1 overall,27.4,1.5,Table 2 (27.4±0.6 over 5 runs),yes
+qwen32b|textgrad,pass@1 overall,31.5,2.0,Table 2 (31.5±1.0),yes
+qwen32b|execre,pass@1 overall,32.5,2.8,Table 2 (32.5±1.4),yes
+llama8b|base,pass@1 overall,16.3,1.5,Table 2 (16.3±0.4),yes
+llama8b|textgrad,pass@1 overall,19.4,1.5,Table 2 (19.4±0.5),yes
+llama8b|execre,pass@1 overall,21.0,1.8,Table 2 (21.0±0.9),yes

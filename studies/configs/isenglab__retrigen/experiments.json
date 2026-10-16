@@ -1,0 +1,44 @@
+{
+  "_repro": {"paper": "RetriGen (TOSEM 2025)", "src_dirs": "RetriGen", "hash_dirs": "RetriGen RQ1"},
+  "project": "r_retrigen",
+  "require_gpu": true,
+  "vars": {"EPOCHS": "75", "WORK": "{RESULTS}/work"},
+  "smoke": {"vars": {"EPOCHS": "1"}, "time": "00:55:00", "matrix_limit": 1},
+  "stages": [
+    {"name": "setup", "description": "pull codellama:7b-code-fp16 (the model the embedding script requests); CodeT5-base snapshot; re-score the shipped predictions",
+     "internet": true, "resources": {"gpus": "h100_1g.10gb:1", "cpus": 4, "mem": "16G", "time": "02:00:00"},
+     "steps": [
+       {"name": "check_gpu", "builtin": "check_gpu", "always": true},
+       {"name": "model_present", "cmd": "$OLLAMA_PREFIX/bin/ollama list | tee {RESULTS}/setup/ollama_list.txt | grep -q 'codellama:7b-code-fp16'", "critical": true},
+       {"name": "codet5_snapshot", "cmd": "HF_HUB_OFFLINE=0 python -c \"from huggingface_hub import snapshot_download as s; print(s('Salesforce/codet5-base', local_dir='{RESULTS}/codet5-base'))\"", "produces": ["codet5-base/config.json"], "critical": true},
+       {"name": "rescore_shipped", "cmd": "python {HPC}/compare.py {RESULTS} {HPC}/reported.csv --rescore-only {REPO}", "always": true}
+     ]},
+    {"name": "retrieve", "description": "per dataset: unzip, IR retrieval, CodeLlama-7B embedding retrieval (Ollama), hybrid alpha=0.5 (README steps)",
+     "depends": [{"stage": "setup", "type": "afterok"}],
+     "matrix": {"dataset": ["OldDataSet", "NewDataSet"]},
+     "resources": {"gpus": "h100_3g.40gb:1", "cpus": 16, "mem": "96G", "time": "24:00:00", "requeue": true},
+     "steps": [
+       {"name": "prepare", "cmd": "W={WORK}/{dataset}; mkdir -p {WORK} && rm -rf $W && cp -r {REPO}/RetriGen $W && cd $W/dataset && unzip -oq {dataset}.zip && if [ -n \"${SMOKE_ROWS:-}\" ] || [ {SMOKE} = 1 ]; then for f in {dataset}/*.csv; do head -n 300 $f > $f.tmp && mv $f.tmp $f; done; fi && python {HPC}/glue_retrigen.py prepare $W {dataset}", "produces": ["work/{dataset}/dataset/{dataset}/*.csv"]},
+       {"name": "ir", "cmd": "cd {WORK}/{dataset}/IR && mkdir -p result/{dataset}/codebase_train_query_{train,test,val} && sh codebase_train_query_train.sh && sh codebase_train_query_test.sh && sh codebase_train_query_val.sh", "produces": ["work/{dataset}/IR/result/{dataset}/codebase_train_query_test/total_result.csv"]},
+       {"name": "embed", "cmd": "cd {WORK}/{dataset}/codellama && sh embed.sh", "produces": ["work/{dataset}/dataset/{dataset}/*_embedding.csv"]},
+       {"name": "embed_retrieval", "cmd": "cd {WORK}/{dataset}/codellama && mkdir -p result/{dataset}/codebase_train_query_{train,test,val} && sh codebase_train_query_train.sh && sh codebase_train_query_test.sh && sh codebase_train_query_val.sh", "produces": ["work/{dataset}/codellama/result/{dataset}/codebase_train_query_test/total_result.csv"]},
+       {"name": "hybrid", "cmd": "cd {WORK}/{dataset}/hybrid && mkdir -p result/{dataset}/{train,test,val} && sh test_alpha_0.5.sh && sh train_alpha_0.5.sh && sh val_alpha_0.5.sh", "produces": ["work/{dataset}/hybrid/result/{dataset}/test/*alpha_0.5.csv"]}
+     ]},
+    {"name": "finetune", "description": "per dataset: fine-tune CodeT5-base 75 epochs (run-RetriGen.sh), predictions, accuracy (RQ1 acc.py) and CodeBLEU",
+     "depends": [{"stage": "retrieve", "type": "aftercorr"}],
+     "matrix_from": "retrieve",
+     "resources": {"gpus": "h100:1", "cpus": 8, "mem": "64G", "time": "72:00:00"},
+     "steps": [
+       {"name": "datas", "cmd": "python {HPC}/glue_retrigen.py jsonl {WORK}/{dataset} {dataset} && ln -sfn {RESULTS}/codet5-base {WORK}/{dataset}/codet5-base", "needs": ["work/{dataset}/hybrid/result/{dataset}/test/*alpha_0.5.csv", "codet5-base/config.json"], "produces": ["work/{dataset}/datas/test.jsonl"]},
+       {"name": "train_test", "cmd": "cd {WORK}/{dataset} && mkdir -p results saved_models && sed -i 's/--epochs [0-9]*/--epochs {EPOCHS}/' run-RetriGen.sh && sh run-RetriGen.sh", "produces": ["work/{dataset}/results/generated_predictions.jsonl"]},
+       {"name": "score", "cmd": "python {HPC}/glue_retrigen.py txt {WORK}/{dataset} {dataset} && cd {REPO}/RQ1/evaluator && python acc.py --label_file {WORK}/{dataset}/result/{dataset}/RetriGen_Label.txt --result_file {WORK}/{dataset}/result/{dataset}/RetriGen_Result.txt | tee {RESULTS}/work/{dataset}/acc.txt", "produces": ["work/{dataset}/acc.txt"]}
+     ]},
+    {"name": "collect", "depends": [{"stage": "finetune", "type": "afterany"}],
+     "resources": {"gpus": "h100_1g.10gb:1", "cpus": 2, "mem": "16G", "time": "01:00:00"},
+     "steps": [
+       {"name": "compare", "cmd": "python {HPC}/compare.py {RESULTS} {HPC}/reported.csv {REPO}", "always": true},
+       {"name": "collect", "builtin": "collect", "always": true}
+     ]}
+  ],
+  "results": {"tables": [{"name": "comparison", "glob": "compare/comparison.csv"}], "copy": ["compare/*", "work/*/acc.txt", "work/*/results/*.jsonl", "setup/*"]}
+}

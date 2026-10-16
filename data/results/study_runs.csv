@@ -1,0 +1,24 @@
+id,label,name,mode,run,jobs,gate,gate_s,cause,dependents,cancelled_by_dependency,cancelled_by_operator,collector,h100_eq_hours
+R1,R1-a,SemGuard,probe,am-20261013-205443,3,withdrawn before start,0,,1,0,3,cancelled,0.0
+R1,R1-b,SemGuard,probe,am-20261013-211917,3,withdrawn before start,0,,1,0,3,cancelled,0.0
+R1,R1-c,SemGuard,probe,am-smoke-20261013-205420,3,withdrawn before start,0,,1,0,3,cancelled,0.0
+R2,R2-a,ProvenanceGuard,full,am-smoke-20261013-204903,3,gate failed,22,wheel: opencv-noinstall,1,1,0,failed (wheel: opencv-noinstall),0.001
+R2,R2-b,ProvenanceGuard,full,am-smoke-20261013-210511,3,gate passed,151,,1,0,2,cancelled,0.006
+R3,R3-a,RetriGen,full,am-smoke-20261013-204113,4,withdrawn before start,0,,2,0,4,cancelled,0.0
+R3,R3-b,RetriGen,full,am-smoke-20261013-204519,4,gate failed,12,wheel: numpy==1.26.2,2,2,0,failed (wheel: numpy==1.26.2),0.001
+R3,R3-c,RetriGen,full,am-smoke-20261013-211011,4,gate failed,1099,step rescore_shipped rc=1,2,2,0,failed (step compare rc=1),0.045
+R4,R4-a,ExeCRE,full,am-smoke-20261013-204732,4,gate failed,12,wheel: crowd-kit,2,2,0,failed (wheel: opencv-noinstall),0.001
+R4,R4-b,ExeCRE,full,am-smoke-20261013-210507,4,gate failed,224,step livecodebench rc=1,2,2,0,completed,0.012
+R4,R4-c,ExeCRE,full,am-smoke-20261013-213232,4,gate passed,282,,2,0,3,cancelled,0.011
+R5,R5-a,EffiSkel,probe,am-20261013-210109,3,withdrawn before start,0,,1,0,3,cancelled,0.0
+R5,R5-b,EffiSkel,probe,am-20261013-211929,3,withdrawn before start,0,,1,0,3,cancelled,0.0
+R6,R6-a,BinarySPD,full,am-smoke-20261013-205120,3,gate failed,22,wheel: opencv-noinstall,1,1,0,failed (wheel: opencv-noinstall),0.002
+R6,R6-b,BinarySPD,full,am-smoke-20261013-210513,3,gate passed,74,,1,0,2,cancelled,0.003
+R7,R7-a,IRCoCo,probe,am-20261013-210121,3,withdrawn before start,0,,1,0,3,cancelled,0.0
+R7,R7-b,IRCoCo,probe,am-20261013-211941,3,withdrawn before start,0,,1,0,3,cancelled,0.0
+R8,R8-a,RobustExt,full,am-smoke-20261013-204434,3,withdrawn before start,0,,1,0,3,cancelled,0.0
+R8,R8-b,RobustExt,full,am-smoke-20261013-204521,3,gate passed,106,,1,0,2,cancelled,0.004
+R9,R9-a,LLM4Perf,full,am-smoke-20261013-203808,3,gate failed,11,wheel: numpy (wheelhouse hidden: PIP_FIND_LINKS),1,1,1,cancelled,0.0
+R9,R9-b,LLM4Perf,full,am-smoke-20261013-204517,3,gate failed,2666,step models_present rc=141,1,1,0,completed,0.107
+R10,R10-a,LogReasoner,probe,am-20261013-210104,3,withdrawn before start,0,,1,0,3,cancelled,0.0
+R10,R10-b,LogReasoner,probe,am-20261013-211013,3,withdrawn before start,0,,1,0,3,cancelled,0.0

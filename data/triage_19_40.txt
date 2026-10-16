@@ -1,0 +1,305 @@
+
+######## #19 frabbisw/robustextended  [EMSE 2026]  ollama=0 prop=0
+   paper: A multi-language perspective on the robustness of LLM code generation
+   models: {'codegen6bmulti': 119, 'magicoder7b': 114, 'codegen2bmulti': 101, 'incoder1b': 93, 'incoder6b': 69, 'qwencoder': 61, 'codegen-6b-multi': 56, 'incoder-1b': 49, 'codegen-2b-multi': 46, 'incoder-6b': 28}
+   sizes : {'6B': 104, '2B': 57, '1B': 51, '7B': 19, '6.7B': 14, '0B': 8, '16B': 2}
+   docker: 0   data hosts: ['huggingface.co/datasets/THUDM/humaneval-x', 'huggingface.co/datasets/glue', 'huggingface.co/datasets/imdb', 'huggingface.co/datasets/multi_nli']
+   result files: 1521 e.g. ['dataset-release/nominal/HumanEval.jsonl', 'dataset-release/nominal/humaneval_partial.jsonl', 'dataset-release/perturbed_finalized/humaneval/full/format/humaneval_doc2comments_s0.jsonl', 'dataset-release/perturbed_finalized/humaneval/full/format/humaneval_new_line_aftercode_s0.jsonl']
+   run> python create_batch_scripts_all_in_one_file.py
+   run> bash batch_files/<experiment_batch_file>.sh
+   run> python generate_single_code_single_gpu.py \
+   run> python generate_single_code_single_gpu.py \
+   run> python generate_single_code_single_gpu.py \
+   run> python run_robust.py
+
+######## #20 klsc749/llm4perf  [ICSE 2026]  ollama=20 prop=1
+   paper: LLM4Perf: Large Language Models Are Effective Samplers for Multi-Objective Performance Modeling
+   models: {'qwen2.5': 11, 'qwen3': 6, 'llama3.3': 4, 'llama3.1': 4, 'mistral': 2, 'deepseek-r1': 2, 'deepseek-v3': 1}
+   sizes : {'7B': 9, '70B': 4, '32B': 4, '8B': 2, '72B': 2, '4B': 2, '235B': 2}
+   docker: 0   data hosts: []
+   result files: 0 e.g. []
+   run> ollama ps
+   run> python javagc_agent_sample.py \
+   run> python sqlite_agent_sampler.py \
+   run> python x264_agent_sampler.py \
+   run> python lrzip_agent_sampler.py \
+
+######## #21 xiaozheng03asada/translibeval  [FSE 2026]  ollama=0 prop=285
+   paper: TransLibEval: Demystify Large Language Models’ Capability in Third-Party Library-Targeted Code Translation
+   models: {'deepseek-v3': 170, 'llama-3-8b': 106, 'llama-3-70b': 90, 'codellama-7b-instruct': 70, 'qwen-max-2025-01-25': 60, 'qwen-max': 38, 'qwen_max': 30, 'llama3-8b': 28, 'codellama7b': 28, 'codellama-7b': 26}
+   sizes : {'8B': 137, '70B': 113, '7B': 109, '370B': 2, '38B': 2}
+   docker: 0   data hosts: []
+   result files: 0 e.g. []
+   run> python -m venv .venv
+   run> python scripts/translib_cli.py env            # show env/config status; use --show-values to print values
+   run> python scripts/translib_cli.py generate --strategies direct --dry-run  # dry run translation
+   run> python scripts/translib_cli.py generate --strategies direct            # run translation
+   run> python scripts/translib_cli.py test cpp2py data/python/src             # isolated cpp→python tests
+   run> python scripts/translib_cli.py test java2py path/to/py_funcs
+   run> python scripts/translib_cli.py test py2cpp data/cpp/src                # copy function_*.cpp -> C++ suite/src & run
+   run> python scripts/translib_cli.py test java2cpp path/to/cpp_funcs
+   run> python code/generate_strategies/Direct/<provider>
+   run> python code/generate_strategies/RA-method/<provider>
+   run> python code/generate_strategies/<ir>/<target_lang>/Sum_<provider>
+   run> python code/generate_strategies/<ir>/<target_lang>/<provider>
+   run> python code/generate_strategies/RA(name)/<target_lang>/signature.py \
+   run> python code/generate_strategies/RA(name)/<target_lang>/Search.py # Just need to run once.
+   run> python code/generate_strategies/RA(name)/<target_lang>/<provider>
+   run> python -m venv .venv && source .venv/bin/activate    # Windows: .venv\Scripts\activate
+   run> bash build_script.sh
+   run> python select_tests.py
+   run> python automate_test.py
+
+######## #22 cgcl-codes/naturalcc  [ICSE 2026]  ollama=0 prop=415
+   paper: Scrub It Out! Erasing Sensitive Memorization in Code Language Models via Machine Unlearning
+   models: {'codegen-2b-mono': 62, 'codebert': 42, 'codegen-2b-mono_secret': 32, 'codet5': 26, 'qwen': 22, 'codellama': 18, 'codebert-base': 18, 'incoder': 18, 'codegen-2b-mono_forgot_set_32_0': 18, 'santacoder': 15}
+   sizes : {'2B': 160, '7B': 44, '1B': 17, '6B': 11, '8B': 10, '32B': 8, '13B': 7, '3B': 5}
+   docker: 18   data hosts: ['drive.google.com/drive/folders/12iUTp4YFRG9qgAtqOV0hXRDpMZmvDp_O?usp=sharing', 'drive.google.com/file/d/1-0VhnHBp9IGh90s2wCNjeCMuy70HPl8X/view', 'drive.google.com/file/d/19MMuTiJreHdC7RosMw-DD3QnMuLJ-AhN/view?usp=sharing', 'drive.google.com/file/d/1BD8BCmGi3mds9su3eWMZYi8ybGB4UEJE/view?usp=sharing']
+   result files: 25 e.g. ['examples/code-summarization-hallucination/dataset/HALLU-EVAL/HALLU-EVAL(Easy).jsonl', 'examples/code-summarization-hallucination/dataset/HALLU-EVAL/HALLU-EVAL(Hard).jsonl', 'examples/code-summarization-hallucination/dataset/Summary-on-HALLU-EVAL/HALLU-EVAL(Easy)-llama13b.jsonl', 'examples/code-summarization-hallucination/dataset/Summary-on-HALLU-EVAL/HALLU-EVAL(Easy)-llama7b.jsonl']
+   run> bash dataset/python_wan/download.sh
+   run> python -m dataset.python_wan.clean
+   run> python -m dataset.python_wan.attributes_cast
+   run> python -m dataset.python_wan.summarization.preprocess
+
+######## #23 smat-lab/mazebreaker  [ICSE 2026]  ollama=3 prop=46
+   paper: MazeBreaker: Multi-Agent Reinforcement Learning for Dynamic Jailbreaking of LLM Security Defenses
+   models: {'deepseek-coder': 10, 'glm-4-air': 7, 'llama-3.1-8b': 6, 'llama-3.1-70b': 5, 'llama-3.1-405b': 5, 'llama2': 3, 'gemma2': 2, 'llama3': 2, 'llama-3-70b': 2, 'deepseek-v3.': 1}
+   sizes : {'70B': 8, '8B': 6, '405B': 5, '72B': 1}
+   docker: 0   data hosts: ['drive.google.com/drive/folders/1kVZDMlj682CVNJGHxehKpDttXQ6a3MPX?usp=drive_link']
+   result files: 0 e.g. []
+   run> python RL_MADDPG.py
+   run> python asr.py
+
+######## #24 leaperovo/logreasoner  [TOSEM 2026]  ollama=0 prop=13
+   paper: LogReasoner: Empowering LLMs with Expert-like Coarse-to-Fine Reasoning for Automated Log Analysis
+   models: {'qwen': 316, 'llama3': 57, 'gemma': 50, 'llama-3-8b-instruct': 29, 'mistral': 25, 'llama3_lora_sft.yaml': 25, 'llama2_config_dict': 25, 'llama3-8b': 24, 'llama2_state_dict': 22, 'qwen2_vl': 19}
+   sizes : {'7B': 348, '8B': 97, '72B': 87, '13B': 85, '14B': 63, '1.5B': 60, '6B': 59, '70B': 56}
+   docker: 18   data hosts: ['huggingface.co/datasets/Anthropic/hh-rlhf', 'huggingface.co/datasets/BUAADreamer/llava-en-zh-300k', 'huggingface.co/datasets/BelleGroup/generated_chat_0.4M', 'huggingface.co/datasets/BelleGroup/multiturn_chat_0.8M']
+   result files: 24 e.g. ['LLaMA-Factory-main/evaluation/ceval/mapping.json', 'LLaMA-Factory-main/evaluation/cmmlu/mapping.json', 'LLaMA-Factory-main/evaluation/mmlu/mapping.json', 'data/enhance_data/all_solutions/ad_slm_2k_output.json']
+   run> python correction_with_gpt.py
+   run> python get_thought.py
+   run> python inference_with_vllm.py
+
+######## #25 berickal/codellm_memo  [ICSE 2026]  ollama=5 prop=0
+   paper: Quantifying Memorization Advantage in Code LLMs
+   models: {'codellama': 5}
+   sizes : {}
+   docker: 0   data hosts: []
+   result files: 0 e.g. []
+   run> python pipeline.py --task code_generation --model codellama --output output --metric ncd --iter 3
+   run> python data/load_dataset.py --dataset xlcost --output output/xlcost
+   run> python data/load_dataset.py --task code_generation --output output/code_generation
+   run> python generation.py --model codellama --folder output/xlcost --task code_generation --output gen/xlcost --iteration 3
+   run> python evaluation.py --folder gen/ --metric ncd --output xlcost_codellama
+   run> python pipeline.py --task code_generation --model codellama --output output --metric rouge --iter 5
+   run> python pipeline.py --task vulnerability_detection --model codellama --output output --metric levenshtein --iter 3
+
+######## #26 oceaneliu/graphlocator  [FSE 2026]  ollama=0 prop=6
+   paper: GraphLocator: Graph-Guided Causal Reasoning for Issue Localization
+   models: {'codegen.py': 10, 'codegen': 9, 'phi3v.py': 3, 'codegen.routine': 3, 'qwen2_audio.py': 2, 'mistral_chat_template': 1, 'qwen2_vl': 1, 'phi3v': 1, 'qwen2_audio': 1}
+   sizes : {}
+   docker: 0   data hosts: []
+   result files: 41 e.g. ['baseline_results/SweRankEmbed-Large_SweRankLLM-Large_loc-bench_top10.json', 'baseline_results/SweRankEmbed-Large_SweRankLLM-Large_swe-bench-lite_top10.json', 'baseline_results/SweRankEmbed-Large_loc-bench_top10.json', 'baseline_results/SweRankEmbed-Large_swe-bench-lite_top10.json']
+   run> python graphlocator.py --dataset_name swe_bench_lite --dataset_language python --model_name gpt-4o-2024-11-20 --results_dir ./results/swe_bench_lite/g
+   run> python graphlocator.py --dataset_name locbench --dataset_language python --model_name gpt-4o-2024-11-20 --results_dir ./results/locbench/gpt4o --repo_
+   run> python graphlocator.py --dataset_name multi_swe_bench_java --dataset_language python --model_name gpt-4o-2024-11-20 --results_dir ./results/multi_swe_
+
+######## #27 fuzz4all/fuzz4all  [ICSE 2024]  ollama=17 prop=11
+   paper: Fuzz4All: Universal Fuzzing with Large Language Models
+   models: {'starcoderbase': 67, 'starcoder': 7, 'starcoderbase-1b': 5, 'llama2': 1, 'codegen2': 1}
+   sizes : {'0B': 6, '1B': 5}
+   docker: 6   data hosts: ['zenodo.org/records/10456883']
+   result files: 0 e.g. []
+   run> python Fuzz4All/fuzz.py --config {config_file.yaml} main_with_config \
+
+######## #28 dbr7/rag-metamorphic-mutation  [ASE 2026]  ollama=14 prop=9
+   paper: When Knowledge Changes: Metamorphic Testing of RAG Systems with Mutations
+   models: {}
+   sizes : {}
+   docker: 1   data hosts: ['figshare.com/s/96fc3abb168180c0a215', 'huggingface.co/datasets/ServiceNow/repliqa']
+   result files: 0 e.g. []
+   run> python step1_closed_book_filter.py --dataset repliqa [--start N] [--end N] [--num-entries N]
+   run> python step1_closed_book_filter.py --dataset ConvFinQA [--start N] [--end N] [--num-entries N]
+   run> python step2_baseline_rag_filter.py --input output/<dataset>/step1_filtered_entries.json --dataset <name> [--start N] [--end N]
+   run> python step3_mutation_campaign.py \
+   run> python oracle_stability.py \
+   run> python step4_fault_repair.py \
+   run> python supplemental/rq3_repair/rq3_prepare_k5_candidate_contexts.py \
+   run> python supplemental/rq3_repair/rq3_k5_paired_ablation.py \
+   run> python supplemental/rq3_repair/rq3_rerank_select_repair.py \
+
+######## #29 ahmadreza-sy/target  [TSE 2025]  ollama=0 prop=0
+   paper: Automated Test Case Repair Using Language Models
+   models: {'codet5p': 63, 'codet5p-770m': 61, 'codegen': 15, 'codegen-350m-multi': 12, 'codet5p-770m_simorder': 8, 'codegendataset': 3, 'codet5p-770m_nocontext': 3, 'codet5p-770m_base': 3, 'codegen-350m-multi_base': 3, 'codegen-350m-multi_simorder': 3}
+   sizes : {}
+   docker: 0   data hosts: ['zenodo.org/badge/DOI/10.6084/m9.figshare.25008893.svg']
+   result files: 0 e.g. []
+   run> python -m venv /path/to/new/virtual/environment
+   run> python main.py encode \
+   run> python main.py finetune \
+   run> python main.py test --model codet5p --model_path salesforce/codet5p-770m \
+   run> python test_run.py --test-index 0 \
+   run> python test_run_stats.py --output-path ./results/codet5p-770m_SimOrder
+   run> python main.py --repository apache/druid \
+
+######## #30 afifaniks/triagerx  [TSE 2026]  ollama=0 prop=0
+   paper: TriagerX: Dual Transformers for Bug Triaging Tasks With Content and Interaction Based Rankings
+   models: {'codebert-base': 16, 'llama3': 3, 'codebert_dt_th20': 3, 'codebert_token_attr': 2, 'llama-3-8b-instruct': 2, 'codegenerator': 2, 'codegen': 2, 'codebert_40_classes_last_dev': 2, 'codebert_base': 2, 'llama-2-13b-chat-hf': 1}
+   sizes : {'7B': 155, '5B': 35, '13B': 2, '8B': 2, '0B': 1}
+   docker: 4   data hosts: ['zenodo.org/records/19464713']
+   result files: 0 e.g. []
+   run> python util/issue_dump.py --path data/openj9 --owner openj9 --repo openj9
+   run> python training/developer/developer_training_openj9.py \
+   run> python test/eval_developer_predictions.py
+   run> python training/developer/statistical_test.py --config training/training_config/openj9/developer/stat_test.yaml --dataset_path data/openj9/openj9_0812
+   run> python reproduction/lbtp_distillation.py \
+   run> python reproduction/train_lbtp.py \
+   run> python reproduction/dbrnna/main.py
+
+######## #31 chenyxeugene/decoderllms-codesearch  [TSE 2026]  ollama=0 prop=0
+   paper: Are Decoder-Only Large Language Models the Silver Bullet for Code Search?
+   models: {'gemma': 64, 'gemmaconfig': 21, 'gemma-7b-it': 20, 'gemma-7b-it-supcon-csn': 20, 'codebertmodel': 18, 'mistralconfig': 18, 'qwen2config': 17, 'unixcoder': 16, 'codebert': 12, 'mistral': 12}
+   sizes : {'7B': 164, '8B': 26, '1.5B': 10, '3B': 8, '1.3B': 6, '13B': 6, '0.5B': 6, '14B': 6}
+   docker: 0   data hosts: ['drive.google.com/drive/folders/1yhw_WKw72Fn4izkPIAmy5s_LdiwDc9hg?usp=sharing', 'huggingface.co/datasets/code-search-net', 'huggingface.co/datasets/上提供集线器上可用的公共数据集之一的名称']
+   result files: 0 e.g. []
+   run> python CSN_Test_Decoder_Model.py \
+   run> python MRR Score: 0.10966641818108162
+   run> python CSN_Test_Finetuning_Decoder_Model.py \
+
+######## #32 nova-hunting/nova-proximity  [ASE 2026]  ollama=5 prop=8
+   paper: MalSkills: Detecting Malicious Skills in the Agentic Supply Chain via Neuro-symbolic Reasoning
+   models: {'llama-3.3-70b-versatile': 1, 'llama3': 1}
+   sizes : {'2B': 1, '70B': 1}
+   docker: 0   data hosts: []
+   result files: 0 e.g. []
+   run> python novaprox.py http://localhost:8000
+   run> python novaprox.py http://localhost:8000 -n -r my_rule.nov
+   run> python novaprox.py --skill /path/to/skill -n -r skill_rules.nov
+   run> python novaprox.py <target> [options]
+   run> python novaprox.py http://localhost:8000/mcp
+   run> python novaprox.py https://mcp.example.com -t your_token
+   run> python novaprox.py "python server.py"
+   run> python novaprox.py "node mcp-server.js"
+   run> python novaprox.py --skill /path/to/skill
+   run> python novaprox.py --skill /path/to/skill -n -r skill_rules.nov
+   run> python novaprox.py --skill /path/to/skills-repo --skill-recursive -n
+   run> python novaprox.py http://localhost:8000/mcp -n
+   run> python novaprox.py http://localhost:8000/mcp -n -r custom.nov --evaluator groq
+   run> python novaprox.py http://localhost:8000 -n -r security.nov --json-report --md-report
+
+######## #33 softwiser-group/commitup  [ASE 2025]  ollama=12 prop=7
+   paper: Comprehend, Imitate, and then Update: Unleashing the Power of LLMs in Test Suite Evolution
+   models: {'qwen7b': 7, 'gemma': 6, 'qwen7b-ollama': 5, 'qwen': 4, 'qwenvllm': 4, 'qwencoder25_7b': 4, 'qwen2.5-coder': 3, 'qwen2.5-coder-7b-instruct': 3, 'qwen_ollama': 2}
+   sizes : {'7B': 3}
+   docker: 0   data hosts: []
+   result files: 0 e.g. []
+   run> bash exp_repos/clone_repos.sh
+   run> vllm serve Qwen/Qwen2.5-Coder-7B-Instruct --port 8000
+
+######## #34 sola-st/llm-agents-study  [ASE 2025]  ollama=0 prop=0
+   paper: Understanding Software Engineering Agents: A Study of Thought-Action-Result Trajectories
+   models: {'codegen.py': 40, 'codegen': 36, 'codegen.rst': 24, 'codegen_rust.py': 12, 'codegen_julia.py': 12, 'codegen_octave.py': 12, 'codegeneration': 4}
+   sizes : {}
+   docker: 0   data hosts: []
+   result files: 240 e.g. ['autocoderover_csv/result_action/django__django-11099.csv', 'autocoderover_csv/result_action/django__django-11133.csv', 'autocoderover_csv/result_action/django__django-12470.csv', 'autocoderover_csv/result_action/django__django-13315.csv']
+   run> python -m venv .venv
+   run> python -m pip install --upgrade pip
+   run> python stats/actions_bars.py
+   run> python stats/stacked_histogram.py
+   run> python stats/top_sequences.py
+   run> python stats/global_stats_acr.py autocoderover_csv/thought_action/
+   run> python stats/global_stats_oh.py openhands_csv/action_action/
+   run> python stats/global_stats_ra.py repairagent_csv/result_thought/
+
+######## #35 intelligentdds/agentchaos  [ASE 2026]  ollama=1 prop=41
+   paper: AgentChaos: Chaos Engineering for Agent Systems via Programmatic Fault Injection
+   models: {'deepseek-v3-2-251201': 7, 'qwen': 7, 'deepseek-v3.2': 2}
+   sizes : {'2B': 2, '5B': 2, '0B': 2, '1B': 1, '3B': 1, '4B': 1, '6B': 1, '7B': 1}
+   docker: 0   data hosts: []
+   result files: 2 e.g. ['datasets/data/HumanEval+.json', 'datasets/data/HumanEval.json']
+   run> python prepare_dataset.py --dataset_name HumanEval
+   run> python prepare_dataset.py --dataset_name "$ds"
+   run> python run_all_method_dataset.py \
+   run> python run_all_method_dataset.py \
+   run> python run_all_eval.py --workers 50
+   run> python all_extract.py --force
+   run> python all_RQ1.py
+   run> python all_RQ2.py
+   run> python all_RQ3.py
+
+######## #36 ipa-lab/hackingbuddygpt  [EMSE 2026]  ollama=18 prop=19
+   paper: LLMs as Hackers: Autonomous Linux Privilege Escalation Attacks
+   models: {'llama3': 5}
+   sizes : {'2B': 1}
+   docker: 3   data hosts: []
+   result files: 0 e.g. []
+   run> python -m venv venv && source ./venv/bin/activate
+
+######## #37 hugh58623/robustness-testing  [EMSE 2025]  ollama=0 prop=0
+   paper: Adversarial attack classification and robustness testing for large language models for code
+   models: {'codegen-350m-multi': 22, 'codegen-350m-mono': 20, 'codegen-6b-multi': 11, 'incoder-1b': 11, 'incoder-6b': 11, 'codegen-2b-mono': 8, 'codegen-6b-mono': 8, 'codegen-2b-multi': 6, 'codet5-large': 6, 'incoder': 6}
+   sizes : {'6B': 43, '2B': 14, '1B': 13, '16B': 4, '7B': 3, '0B': 2, '8B': 1}
+   docker: 0   data hosts: ['huggingface.co/datasets/glue', 'huggingface.co/datasets/imdb', 'huggingface.co/datasets/multi_nli', 'huggingface.co/datasets/paws']
+   result files: 186 e.g. ['OpenAttack/HumanEval.jsonl', 'OpenAttack/HumanEval_adv.jsonl', 'dataset-release/nominal/HumanEval.jsonl', 'dataset-release/nominal/humaneval_partial.jsonl']
+   run> python build.py # build my-languages.so file
+   run> python run_robust.py create_partial natgen # preparing partial code for code perturbations
+   run> python run_robust.py perturb nlaugmenter # perturb with nlaugmenter transformations on docstrings
+   run> python run_robust.py perturb func_name # perturb with function rename
+   run> python run_robust.py perturb natgen # perturb with code syntax transformations
+   run> python run_robust.py perturb code # perturb with code format transformations
+   run> python run_robust.py perturb func_name --aug_method 0 --datasets humaneval mbpp # perturb with function rename CamelCase (index=0 defined in config.js
+   run> python run_robust.py nominal normal # nominal evaluation with non-perturbed datasets
+   run> python run_robust.py nominal natgen # nominal evaluation with non-perturbed partial code datasets
+   run> python run_robust.py exec nlaugmenter # nlaugmenter perturbed datasets evaluation
+   run> python run_robust.py exec func_name # function rename perturbed datasets evaluation
+   run> python run_robust.py exec natgen # code structure perturbed datasets evaluation
+   run> python run_robust.py exec format # code format transformation perturbed datasets evaluation
+   run> python run_robust.py exec func_name --aug_method 0 # evaluate model on dataset with function rename CamelCase (index=0 defined in config.json)
+   run> python run_robust.py perturb func_name --datasets humaneval mbpp --models codegen-350M-multi codegen-350M-mono # perturb dataset humaneval mbpp on cod
+   run> python run_robust.py exec func_name --datasets humaneval mbpp --models codegen-350M-multi codegen-350M-mono # evaluate model on dataset humaneval mbpp
+   run> python run_robust.py report func_name --models codegen-350M-multi codegen-350M-mono --datasets humaneval # get detailed results for dataset perturbed 
+   run> python run_robust2.py report random --perturbed_result_path "perturbed_dataset_output_dir" --nominal_result_path "nominal_dataset_output_dir"
+
+######## #38 yerbapage/detectcodegpt  [ICSE 2025]  ollama=0 prop=0
+   paper: Between Lines of Code: Unraveling the Distinct Patterns of Machine and Human Programmers
+   models: {'codellama': 5, 'codellama-7b-hf': 5, 'incoder': 5, 'codellama-7b-hf-tp1.0-nostop': 4, 'codet5-large': 3, 'codet5p-770m': 3, 'codellama-7b-hf-10000-tp1.0': 2, 'santacoder': 2, 'codet5p': 2, 'gpt-neox-20b': 2}
+   sizes : {'7B': 14, '13B': 7, '20B': 7, '11B': 3}
+   docker: 0   data hosts: []
+   result files: 0 e.g. []
+   run> python generate.py
+   run> python analyze_length.py
+   run> python analyze_law_and_frequency.py
+   run> python analyze_proportion.py
+   run> python analyze_naturalness.py
+   run> python main.py
+
+######## #39 coinse/clotho  [FSE 2026]  ollama=0 prop=27
+   paper: Clotho: Measuring Task-Specific Pre-Generation Test Adequacy for LLM Inputs
+   models: {'gpt-neo': 103, 'gemma': 32, 'mistral': 30, 'llama-2': 7, 'gemma_model_wrapper': 4, 'mistral_model_wrapper': 4, 'gpt-neox': 3, 'gpt-neo.': 3, 'codebert': 3, 'llama-3.1-8b-instruct': 2}
+   sizes : {'12B': 12, '3B': 11, '5B': 10, '9B': 7, '11B': 6, '7B': 4, '15B': 4, '14B': 4}
+   docker: 3   data hosts: ['zenodo.org/records/19693236']
+   result files: 24 e.g. ['experiments/initial_tests_gemma/adding_odd_numbers/inference_results.json', 'experiments/initial_tests_gemma/github_typo_check/inference_results.json', 'experiments/initial_tests_gemma/json_repair/inference_results.json', 'experiments/initial_tests_gemma/model_name_extraction/inference_results.json']
+   run> $ python 1-1_extract_hidden_states.py -t <task_name> -d <dataset_name> -p messages_template --model <model_name>
+   run> $ python 2-1_generate_outputs_and_record_hidden_states.py -t <task_name> -d <dataset_name> -p messages_template --model <model_name>
+   run> $ python run_clotho_iterations.py --target_task <task_name> --target_llm <model_name> --refset_extension_methods <reference_sampling_method> --seeds <
+   run> $ python 1-2_extract_input_token_logprobs.py --model <model_name> # extracts token log-probabilities for all tasks for the specified model
+   run> $ python run_baseline_OOD.py --target_llm <model_name> # computes MDSA and GMM_base scores for all tasks for the specified model
+   run> $ python run_baseline_SLL.py --target_llm <model_name> # computes SLL (sequence log likelihoods for input tokens) scores for all tasks for the specifi
+   run> $ python 3-1_repeated_outputs_variance.py -t <task_name> -d <dataset_name> -p messages_template --model <model_name> # Computes LOHS-Variance scores f
+   run> $ python 3-2_token_based_metrics.py -t <task_name> -d <dataset_name> -p messages_template --model <model_name> # Computes token-based metrics for the 
+   run> $ python 3-3_semantic_entropy.py -t <task_name> -d <dataset_name> -p messages_template --model <model_name> # Computes semantic entropy scores for the
+
+######## #40 intelligent-cat-lab/ces  [ICSE 2026]  ollama=0 prop=25
+   paper: Assessing Coherency and Consistency of Code Execution Reasoning by Large Language Models
+   models: {'codellama': 28, 'magicoder': 16, 'starcoder': 10, 'mistral': 9, 'qwen': 6, 'starcoder2-15b': 5, 'deepseek-r1': 5, 'deepseek-coder-33b': 4, 'codellama-13b-instruct-hf': 3, 'codellama-13b-hf': 3}
+   sizes : {'13B': 9, '7B': 7, '33B': 7, '6.7B': 5, '15B': 5, '34B': 2, '0B': 2, '1B': 1}
+   docker: 4   data hosts: ['zenodo.org/records/17451159']
+   result files: 485 e.g. ['dataset/humaneval/HumanEval_0/prime_path.json', 'dataset/humaneval/HumanEval_0__0/prime_path.json', 'dataset/humaneval/HumanEval_0__1/prime_path.json', 'dataset/humaneval/HumanEval_1/prime_path.json']
+   run> bash scripts/setup_data.sh
+   run> bash scripts/run_ces.sh $MODEL_ID $DATASET $CACHE_DIR
+   run> bash scripts/run_consistency.sh $MODEL_ID $DATASET
+   run> bash scripts/run_divergence_localization.sh $MODEL_ID $DATASET
+   run> bash scripts/run_bug_tasks.sh $MODEL_ID HumanEvalFix $CACHE_DIR
+   run> bash scripts/analyze_bug_tasks.sh $MODEL_ID HumanEvalFix
+   run> bash scripts/extract_properties.sh $DATASET_NAME
+   run> bash script/extract_prime_path.sh $DATASET_NAME

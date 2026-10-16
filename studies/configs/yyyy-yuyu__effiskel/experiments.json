@@ -1,0 +1,139 @@
+{
+ "_repro": {
+  "paper": "EffiSkel (FSE 2026)",
+  "src_dirs": ".",
+  "hash_dirs": ".",
+  "modules": "StdEnv/2023 python/3.10"
+ },
+ "project": "r_probe_effiskel",
+ "require_gpu": true,
+ "vars": {},
+ "smoke": {
+  "vars": {},
+  "time": "00:55:00"
+ },
+ "stages": [
+  {
+   "name": "setup",
+   "description": "data and models for the probe",
+   "internet": true,
+   "resources": {
+    "gpus": "h100_1g.10gb:1",
+    "cpus": 4,
+    "mem": "16G",
+    "time": "02:00:00"
+   },
+   "steps": [
+    {
+     "name": "check_gpu",
+     "builtin": "check_gpu",
+     "always": true
+    },
+    {
+     "name": "setup_0",
+     "cmd": "cd {REPO} && grep -rhoE 'drive.google.com/[^ )\\\"]+' README.md | sort -u | tee {RESULTS}/drive_links.txt"
+    },
+    {
+     "name": "setup_1",
+     "cmd": "mkdir -p {RESULTS}/data && cd {RESULTS}/data && for u in $(cat {RESULTS}/drive_links.txt); do HF_HUB_OFFLINE=0 python -m gdown --fuzzy \"https://$u\" || echo \"FAILED $u\"; done; ls -la"
+    },
+    {
+     "name": "setup_2",
+     "cmd": "HF_HUB_OFFLINE=0 python -c \"from huggingface_hub import snapshot_download as s; print(s('deepseek-ai/deepseek-coder-6.7b-instruct', allow_patterns=['*.json','*.safetensors','tokenizer*','*.model']))\""
+    }
+   ]
+  },
+  {
+   "name": "probe",
+   "description": "every documented entry point, README order, minimal sizes",
+   "depends": [
+    {
+     "stage": "setup",
+     "type": "afterany"
+    }
+   ],
+   "resources": {
+    "gpus": "h100:1",
+    "cpus": 6,
+    "mem": "48G",
+    "time": "06:00:00"
+   },
+   "steps": [
+    {
+     "name": "env_requirements_txt",
+     "cmd": "cd {REPO} && pip install --no-index -r requirements.txt"
+    },
+    {
+     "name": "env_vendored_transformers",
+     "cmd": "cd {REPO}/transformers && pip install --no-index --no-deps -e ."
+    },
+    {
+     "name": "1_SMS",
+     "cmd": "cd {REPO} && timeout 1h python SMS.py"
+    },
+    {
+     "name": "1_SSS",
+     "cmd": "cd {REPO} && timeout 1h python SSS.py"
+    },
+    {
+     "name": "1_TAS",
+     "cmd": "cd {REPO} && timeout 1h python TAS.py"
+    },
+    {
+     "name": "2_train_base",
+     "cmd": "cd {REPO} && HF_HUB_OFFLINE=1 timeout 1h python train_base_model.py"
+    },
+    {
+     "name": "2_train_skeleton",
+     "cmd": "cd {REPO} && HF_HUB_OFFLINE=1 timeout 1h python train_skeleton_model.py"
+    },
+    {
+     "name": "3_generate_skeleton",
+     "cmd": "cd {REPO} && HF_HUB_OFFLINE=1 timeout 30m python generate_skeleton.py"
+    },
+    {
+     "name": "4_test_one_solution",
+     "cmd": "cd {REPO}/evaluate 2>/dev/null || cd {REPO}; timeout 30m bash test_one_solution.sh"
+    }
+   ]
+  },
+  {
+   "name": "collect",
+   "depends": [
+    {
+     "stage": "probe",
+     "type": "afterany"
+    }
+   ],
+   "resources": {
+    "gpus": "h100_1g.10gb:1",
+    "cpus": 2,
+    "mem": "8G",
+    "time": "01:00:00"
+   },
+   "steps": [
+    {
+     "name": "compare",
+     "cmd": "python {HPC}/compare.py {RESULTS} {HPC}/reported.csv",
+     "always": true
+    },
+    {
+     "name": "collect",
+     "builtin": "collect",
+     "always": true
+    }
+   ]
+  }
+ ],
+ "results": {
+  "tables": [
+   {
+    "name": "comparison",
+    "glob": "compare/comparison.csv"
+   }
+  ],
+  "copy": [
+   "compare/*"
+  ]
+ }
+}

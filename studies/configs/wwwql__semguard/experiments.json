@@ -1,0 +1,127 @@
+{
+ "_repro": {
+  "paper": "SemGuard (ASE 2025)",
+  "src_dirs": ".",
+  "hash_dirs": ".",
+  "modules": "StdEnv/2023 python/3.10"
+ },
+ "project": "r_probe_semguard",
+ "require_gpu": true,
+ "vars": {},
+ "smoke": {
+  "vars": {},
+  "time": "00:55:00"
+ },
+ "stages": [
+  {
+   "name": "setup",
+   "description": "data and models for the probe",
+   "internet": true,
+   "resources": {
+    "gpus": "h100_1g.10gb:1",
+    "cpus": 4,
+    "mem": "16G",
+    "time": "02:00:00"
+   },
+   "steps": [
+    {
+     "name": "check_gpu",
+     "builtin": "check_gpu",
+     "always": true
+    },
+    {
+     "name": "setup_0",
+     "cmd": "mkdir -p {RESULTS}/data && bsdtar -xf {REPO}/data/SemDiff.rar -C {RESULTS}/data && ls {RESULTS}/data/data | head"
+    },
+    {
+     "name": "setup_1",
+     "cmd": "HF_HUB_OFFLINE=0 python -c \"from huggingface_hub import snapshot_download as s; [print(s(m)) for m in ('bigcode/starcoder2-7b','deepseek-ai/deepseek-coder-1.3b-base','Salesforce/codet5p-220m-py')]\""
+    }
+   ]
+  },
+  {
+   "name": "probe",
+   "description": "every documented entry point, README order, minimal sizes",
+   "depends": [
+    {
+     "stage": "setup",
+     "type": "afterany"
+    }
+   ],
+   "resources": {
+    "gpus": "h100_3g.40gb:1",
+    "cpus": 6,
+    "mem": "48G",
+    "time": "03:00:00"
+   },
+   "steps": [
+    {
+     "name": "env_requirements_txt",
+     "cmd": "cd {REPO} && pip install --no-index -r requirements.txt"
+    },
+    {
+     "name": "env_vendored_transformers",
+     "cmd": "cd {REPO}/transformers && pip install --no-index --no-deps -e . && python -c 'import transformers; print(transformers.__version__)'"
+    },
+    {
+     "name": "1_train_base_model",
+     "cmd": "cd {REPO} && HF_HUB_OFFLINE=1 timeout 2h python train_base_model.py --model bigcode/starcoder2-7b --model_path bigcode/starcoder2-7b --save_dir {RESULTS}/base_sc2 --train-path {RESULTS}/data/data/train1 --epochs 1"
+    },
+    {
+     "name": "2_train_evaluator",
+     "cmd": "cd {REPO}/critic && HF_HUB_OFFLINE=1 timeout 1h bash run.sh 29517 0"
+    },
+    {
+     "name": "3_generate_semguard",
+     "cmd": "cd {REPO} && HF_HUB_OFFLINE=1 timeout 1h python generate_sem.py --test_path {RESULTS}/data/data/test1 --output_path {RESULTS}/gen_sem --model_path {RESULTS}/base_sc2 -s 0 -e 2"
+    },
+    {
+     "name": "3b_generate_baseline",
+     "cmd": "cd {REPO} && HF_HUB_OFFLINE=1 timeout 1h python generate.py --test_path {RESULTS}/data/data/test1 --output_path {RESULTS}/gen_base --model_path {RESULTS}/base_sc2 -s 0 -e 2"
+    },
+    {
+     "name": "4_test_one_solution",
+     "cmd": "cd {REPO}/metric && timeout 30m bash test_one_solution.sh"
+    }
+   ]
+  },
+  {
+   "name": "collect",
+   "depends": [
+    {
+     "stage": "probe",
+     "type": "afterany"
+    }
+   ],
+   "resources": {
+    "gpus": "h100_1g.10gb:1",
+    "cpus": 2,
+    "mem": "8G",
+    "time": "01:00:00"
+   },
+   "steps": [
+    {
+     "name": "compare",
+     "cmd": "python {HPC}/compare.py {RESULTS} {HPC}/reported.csv",
+     "always": true
+    },
+    {
+     "name": "collect",
+     "builtin": "collect",
+     "always": true
+    }
+   ]
+  }
+ ],
+ "results": {
+  "tables": [
+   {
+    "name": "comparison",
+    "glob": "compare/comparison.csv"
+   }
+  ],
+  "copy": [
+   "compare/*"
+  ]
+ }
+}

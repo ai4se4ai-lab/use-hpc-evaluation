@@ -1,0 +1,18 @@
+{
+ "paper": "SemGuard (ASE 2025)",
+ "requirements": ["torch==2.4.1", "accelerate", "peft", "bitsandbytes", "numpy<2", "tqdm", "sentencepiece", "huggingface_hub", "pyext"],
+ "setup": [
+   "mkdir -p {RESULTS}/data && bsdtar -xf {REPO}/data/SemDiff.rar -C {RESULTS}/data && ls {RESULTS}/data/data | head",
+   "HF_HUB_OFFLINE=0 python -c \"from huggingface_hub import snapshot_download as s; [print(s(m)) for m in ('bigcode/starcoder2-7b','deepseek-ai/deepseek-coder-1.3b-base','Salesforce/codet5p-220m-py')]\""
+ ],
+ "entry_points": [
+   {"name": "env_requirements_txt", "cmd": "cd {REPO} && pip install --no-index -r requirements.txt"},
+   {"name": "env_vendored_transformers", "cmd": "cd {REPO}/transformers && pip install --no-index --no-deps -e . && python -c 'import transformers; print(transformers.__version__)'"},
+   {"name": "1_train_base_model", "cmd": "cd {REPO} && HF_HUB_OFFLINE=1 timeout 2h python train_base_model.py --model bigcode/starcoder2-7b --model_path bigcode/starcoder2-7b --save_dir {RESULTS}/base_sc2 --train-path {RESULTS}/data/data/train1 --epochs 1"},
+   {"name": "2_train_evaluator", "cmd": "cd {REPO}/critic && HF_HUB_OFFLINE=1 timeout 1h bash run.sh 29517 0"},
+   {"name": "3_generate_semguard", "cmd": "cd {REPO} && HF_HUB_OFFLINE=1 timeout 1h python generate_sem.py --test_path {RESULTS}/data/data/test1 --output_path {RESULTS}/gen_sem --model_path {RESULTS}/base_sc2 -s 0 -e 2"},
+   {"name": "3b_generate_baseline", "cmd": "cd {REPO} && HF_HUB_OFFLINE=1 timeout 1h python generate.py --test_path {RESULTS}/data/data/test1 --output_path {RESULTS}/gen_base --model_path {RESULTS}/base_sc2 -s 0 -e 2"},
+   {"name": "4_test_one_solution", "cmd": "cd {REPO}/metric && timeout 30m bash test_one_solution.sh"}
+ ],
+ "not_comparable": [["starcoder2-7b|semdiff", "pass@1 (Temp., ROCODE, SG-R, SG-P)", "21.11", "Table III", "evaluated only if the documented chain runs (see probe)"]]
+}

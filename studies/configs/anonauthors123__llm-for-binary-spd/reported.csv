@@ -1,0 +1,26 @@
+key,metric,reported,tolerance,source,comparable
+gpt-3.5-turbo|assembly_code|rescored-shipped,accuracy,0.492,0.01,Table 1 zero-shot (gpt-3.5-turbo),yes
+gpt-3.5-turbo|assembly_code|rescored-shipped,f1,0.568,0.01,Table 1 zero-shot (gpt-3.5-turbo),yes
+gpt-3.5-turbo|assembly_code|rescored-shipped,fpr,0.725,0.01,Table 1 zero-shot (gpt-3.5-turbo),yes
+gpt-3.5-turbo|assembly_code|rescored-shipped,failure_rate,0.001,0.01,Table 1 zero-shot (gpt-3.5-turbo),yes
+gpt-3.5-turbo|pseudo_code|rescored-shipped,accuracy,0.502,0.01,Table 1 zero-shot (gpt-3.5-turbo),yes
+gpt-3.5-turbo|pseudo_code|rescored-shipped,f1,0.546,0.01,Table 1 zero-shot (gpt-3.5-turbo),yes
+gpt-3.5-turbo|pseudo_code|rescored-shipped,fpr,0.639,0.01,Table 1 zero-shot (gpt-3.5-turbo),yes
+gpt-3.5-turbo|pseudo_code|rescored-shipped,failure_rate,0.006,0.01,Table 1 zero-shot (gpt-3.5-turbo),yes
+deepseek-reasoner|assembly_code|rescored-shipped,accuracy,0.514,0.01,Table 1 zero-shot (deepseek-reasoner),yes
+deepseek-reasoner|assembly_code|rescored-shipped,f1,0.592,0.01,Table 1 zero-shot (deepseek-reasoner),yes
+deepseek-reasoner|assembly_code|rescored-shipped,fpr,0.722,0.01,Table 1 zero-shot (deepseek-reasoner),yes
+deepseek-reasoner|assembly_code|rescored-shipped,failure_rate,0.0,0.01,Table 1 zero-shot (deepseek-reasoner),yes
+deepseek-reasoner|pseudo_code|rescored-shipped,accuracy,0.523,0.01,Table 1 zero-shot (deepseek-reasoner),yes
+deepseek-reasoner|pseudo_code|rescored-shipped,f1,0.6,0.01,Table 1 zero-shot (deepseek-reasoner),yes
+deepseek-reasoner|pseudo_code|rescored-shipped,fpr,0.712,0.01,Table 1 zero-shot (deepseek-reasoner),yes
+deepseek-reasoner|pseudo_code|rescored-shipped,failure_rate,0.001,0.01,Table 1 zero-shot (deepseek-reasoner),yes
+Qwen2.5-Coder-7B-Instruct|assembly_code|rerun,accuracy,0.511,0.05,Table 1 zero-shot (Qwen2.5-Coder-7B-Instruct),yes
+Qwen2.5-Coder-7B-Instruct|assembly_code|rerun,f1,0.263,0.05,Table 1 zero-shot (Qwen2.5-Coder-7B-Instruct),yes
+Qwen2.5-Coder-7B-Instruct|assembly_code|rerun,fpr,0.151,0.05,Table 1 zero-shot (Qwen2.5-Coder-7B-Instruct),yes
+Qwen2.5-Coder-7B-Instruct|assembly_code|rerun,failure_rate,0.107,0.05,Table 1 zero-shot (Qwen2.5-Coder-7B-Instruct),yes
+Qwen2.5-Coder-7B-Instruct|pseudo_code|rerun,accuracy,0.461,0.05,Table 1 zero-shot (Qwen2.5-Coder-7B-Instruct),yes
+Qwen2.5-Coder-7B-Instruct|pseudo_code|rerun,f1,0.471,0.05,Table 1 zero-shot (Qwen2.5-Coder-7B-Instruct),yes
+Qwen2.5-Coder-7B-Instruct|pseudo_code|rerun,fpr,0.338,0.05,Table 1 zero-shot (Qwen2.5-Coder-7B-Instruct),yes
+Qwen2.5-Coder-7B-Instruct|pseudo_code|rerun,failure_rate,0.199,0.05,Table 1 zero-shot (Qwen2.5-Coder-7B-Instruct),yes
+fine-tuned models|all|rerun,accuracy,,,Tables 2-3,training data and LoRA adapters not released (test splits only; README: full data 'upon acceptance')

@@ -1,0 +1,9 @@
+key,metric,reported,tolerance,source,comparable
+env_requirements_txt,exit_code,0,0,README step,yes
+env_vendored_transformers,exit_code,0,0,README step,yes
+1_train_base_model,exit_code,0,0,README step,yes
+2_train_evaluator,exit_code,0,0,README step,yes
+3_generate_semguard,exit_code,0,0,README step,yes
+3b_generate_baseline,exit_code,0,0,README step,yes
+4_test_one_solution,exit_code,0,0,README step,yes
+starcoder2-7b|semdiff,"pass@1 (Temp., ROCODE, SG-R, SG-P)",21.11,,Table III,evaluated only if the documented chain runs (see probe)
