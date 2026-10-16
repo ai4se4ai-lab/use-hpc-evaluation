@@ -1,0 +1,16 @@
+{
+ "paper": "LogReasoner (TOSEM 2026)",
+ "requirements": ["transformers", "numpy", "torch", "huggingface_hub", "tokenizers", "scikit-learn", "tqdm", "requests", "vllm", "peft", "trl", "datasets", "accelerate", "fire", "sentencepiece"],
+ "setup": [
+   "HF_HUB_OFFLINE=0 python -c \"from huggingface_hub import snapshot_download as s; print(s('unsloth/llama-3-8b-Instruct', allow_patterns=['*.json','*.safetensors','tokenizer*']))\" | tail -1 > {RESULTS}/llama_path.txt && P=$(cat {RESULTS}/llama_path.txt) && cd {REPO}/LLaMA-Factory-main && ln -sfn $P llama3-8b-instruct && mkdir -p llama_models && ln -sfn $P llama_models/llama3-8b-instruct && ls -la llama3-8b-instruct llama_models"
+ ],
+ "probe_gpu": "h100:1", "probe_time": "08:00:00",
+ "entry_points": [
+   {"name": "env_requirements", "cmd": "cd {REPO} && pip install --no-index -r requirements.txt"},
+   {"name": "env_llamafactory", "cmd": "cd {REPO}/LLaMA-Factory-main && pip install --no-index --no-deps -e . && llamafactory-cli version"},
+   {"name": "1_sft_ldsm", "cmd": "cd {REPO}/LLaMA-Factory-main && HF_HUB_OFFLINE=1 timeout 3h llamafactory-cli train examples/llama3_lora_sft_ldsm_2.yaml"},
+   {"name": "2_dpo", "cmd": "cd {REPO}/LLaMA-Factory-main && HF_HUB_OFFLINE=1 timeout 3h llamafactory-cli train examples/llama3_lora_dpo.yaml"},
+   {"name": "3_inference_vllm", "cmd": "cd {REPO} && HF_HUB_OFFLINE=1 timeout 1h python inference_with_vllm.py"}
+ ],
+ "not_comparable": [["llama3-8b|ldsm", "accuracy/F1", "", "Tables (LogReasoner)", "evaluated only if the documented chain runs (see probe)"]]
+}

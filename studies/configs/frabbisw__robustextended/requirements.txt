@@ -1,0 +1,10 @@
+# requirements.txt in the repository is a conda export (not pip-installable); versions from it where compatible.
+# transformers 4.21.1 (pinned) cannot load Qwen2.5 -> 4.45.2 (deviation); torch 2.0.0 unavailable -> 2.1.2
+torch==2.1.2
+transformers==4.45.2
+accelerate
+jsonlines
+numpy<2
+pandas
+tqdm
+huggingface_hub

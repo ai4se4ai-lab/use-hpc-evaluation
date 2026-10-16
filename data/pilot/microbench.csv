@@ -1,0 +1,15 @@
+benchmark,param,seconds
+scaffold,run1,.188810860
+selftest,run1,.500667508
+scaffold,run2,.178480028
+selftest,run2,.477356456
+scaffold,run3,.180080448
+selftest,run3,.472079284
+runner_overhead_per_step,50 steps,0.0071
+runner_skip_per_step,50 done steps,0.0012
+audit_snapshot,10 cells,0.0174
+audit_snapshot,100 cells,0.0254
+audit_snapshot,1000 cells,0.1220
+audit_snapshot,5000 cells,0.5210
+collect,10000 records,0.173
+collect,100000 records,1.407

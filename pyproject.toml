@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "use-hpc-eval"
+version = "0.1.0"
+description = "Evaluation harness for the use-hpc agent skill: mining SE Artifacts and checking LLM benchmark studies on Slurm clusters"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Majid Babaei", email = "ai4se4ai@gmail.com" }]
+dependencies = []   # standard library only
+keywords = ["reproducibility", "HPC", "Slurm", "LLM", "agent skills", "mining software repositories"]
+
+[project.urls]
+"use-hpc skill" = "https://github.com/ai4se4ai-lab/use-hpc-claude-skill"
+
+[project.scripts]
+use-hpc-eval = "use_hpc_eval.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

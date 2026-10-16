@@ -1,0 +1,22 @@
+{
+ "paper": "EffiSkel (FSE 2026)",
+ "requirements": ["torch==2.4.1", "accelerate", "peft", "bitsandbytes", "numpy<2", "tqdm", "sentencepiece", "huggingface_hub", "gdown", "pyext"],
+ "setup": [
+   "cd {REPO} && grep -rhoE 'drive.google.com/[^ )\\\"]+' README.md | sort -u | tee {RESULTS}/drive_links.txt",
+   "mkdir -p {RESULTS}/data && cd {RESULTS}/data && for u in $(cat {RESULTS}/drive_links.txt); do HF_HUB_OFFLINE=0 python -m gdown --fuzzy \"https://$u\" || echo \"FAILED $u\"; done; ls -la",
+   "HF_HUB_OFFLINE=0 python -c \"from huggingface_hub import snapshot_download as s; print(s('deepseek-ai/deepseek-coder-6.7b-instruct', allow_patterns=['*.json','*.safetensors','tokenizer*','*.model']))\""
+ ],
+ "probe_gpu": "h100:1", "probe_time": "06:00:00",
+ "entry_points": [
+   {"name": "env_requirements_txt", "cmd": "cd {REPO} && pip install --no-index -r requirements.txt"},
+   {"name": "env_vendored_transformers", "cmd": "cd {REPO}/transformers && pip install --no-index --no-deps -e ."},
+   {"name": "1_SMS", "cmd": "cd {REPO} && timeout 1h python SMS.py"},
+   {"name": "1_SSS", "cmd": "cd {REPO} && timeout 1h python SSS.py"},
+   {"name": "1_TAS", "cmd": "cd {REPO} && timeout 1h python TAS.py"},
+   {"name": "2_train_base", "cmd": "cd {REPO} && HF_HUB_OFFLINE=1 timeout 1h python train_base_model.py"},
+   {"name": "2_train_skeleton", "cmd": "cd {REPO} && HF_HUB_OFFLINE=1 timeout 1h python train_skeleton_model.py"},
+   {"name": "3_generate_skeleton", "cmd": "cd {REPO} && HF_HUB_OFFLINE=1 timeout 30m python generate_skeleton.py"},
+   {"name": "4_test_one_solution", "cmd": "cd {REPO}/evaluate 2>/dev/null || cd {REPO}; timeout 30m bash test_one_solution.sh"}
+ ],
+ "not_comparable": [["deepseek-coder-6.7b|mercury", "efficiency/correctness", "", "Tables (EffiSkel)", "evaluated only if the documented chain runs (see probe)"]]
+}

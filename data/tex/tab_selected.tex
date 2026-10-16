@@ -1,0 +1,16 @@
+\begin{tabularx}{\textwidth}{@{}l l l l >{\raggedright\arraybackslash}p{3.1cm} X@{}}
+\toprule
+Id & Venue & Repository & Mode & Open-weight models & Executed subset \\
+\midrule
+R1 & ASE'25 & \code{wwwql/semguard} & probe & StarCoder2-7B; DeepSeek-Coder-1.3B (evaluator) & every README entry point (train base; train evaluator; generate; test) \\
+R2 & ASE'26 & \code{cmu-soda/provenanceguard} & full & Qwen3.5-9B (vLLM bf16) & 3 methods x 2 benchmarks x 5 runs; re-score of shipped runs \\
+R3 & TOSEM'25 & \code{isenglab/retrigen} & full & CodeLlama-7B (Ollama) + CodeT5-base & retrieval (IR + embeddings + hybrid) and 75-epoch fine-tuning on both datasets; re-score of shipped predictions \\
+R4 & ASE'26 & \code{moyi-dong/execre} & full & Qwen2.5-Coder-32B-Instruct; Llama-3.1-8B-Instruct (vLLM bf16) & Base / TextGrad / ExeCRE on LiveCodeBench 2025-01..05 (n=5) \\
+R5 & FSE'26 & \code{yyyy-yuyu/effiskel} & probe & DeepSeek-Coder-6.7B & every README entry point (data processing; training; generation; test) \\
+R6 & TOSEM'26 & \code{anonauthors123/llm-for-binary-spd} & full & Qwen2.5-Coder-7B-Instruct (vLLM) & zero-shot prompting on pseudo-code and assembly test sets; re-score of shipped API predictions \\
+R7 & FSE'24 & \code{libolun-star/ircoco} & probe & GPT-2 / CodeGPT & every README entry point (preprocess; external SFT; evaluator; RL; evaluation) \\
+R8 & EMSE'26 & \code{frabbisw/robustextended} & full & CodeGen-2B-multi; Qwen2.5-Coder-7B-Instruct & nominal + partial + 6 format perturbations x 5 seeds in Java/C++/JS \\
+R9 & ICSE'26 & \code{klsc749/llm4perf} & full & Qwen2.5-7B/32B-instruct (Ollama) & sampler on 4 systems (budget 20; 10 repetitions) \\
+R10 & TOSEM'26 & \code{leaperovo/logreasoner} & probe & Llama-3-8B-Instruct & every README entry point (SFT; DPO; vLLM inference) \\
+\bottomrule
+\end{tabularx}

@@ -1,0 +1,8 @@
+# LLM-online path of the artefact (openai client, jsonlines, tiktoken, transformers) + vLLM server
+openai
+jsonlines
+tiktoken
+transformers
+scikit-learn
+vllm
+huggingface_hub

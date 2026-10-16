@@ -1,0 +1,70 @@
+{
+ "snapshot": "2026-10-13 13:03:45",
+ "runs": 11,
+ "jobs_total": 188,
+ "smoke": [
+  {
+   "run": "am2m-smoke-20261012-234155",
+   "jobs": 10,
+   "completed": 10,
+   "steps_ok": 36,
+   "steps_failed": 0,
+   "makespan_s": 1068,
+   "sum_job_s": 2864,
+   "distinct_nodes": 7,
+   "median_wait_s": 511
+  },
+  {
+   "run": "am2m-smoke-20261013-025136",
+   "jobs": 10,
+   "completed": 10,
+   "steps_ok": 36,
+   "steps_failed": 0,
+   "makespan_s": 1461,
+   "sum_job_s": 3002,
+   "distinct_nodes": 8,
+   "median_wait_s": 706
+  },
+  {
+   "run": "am2m-smoke-20261013-031917",
+   "jobs": 10,
+   "completed": 10,
+   "steps_ok": 36,
+   "steps_failed": 0,
+   "makespan_s": 1113,
+   "sum_job_s": 2656,
+   "distinct_nodes": 7,
+   "median_wait_s": 690
+  }
+ ],
+ "gate_failures": [
+  {
+   "run": "am2m-20261012-220357",
+   "jobs": 26,
+   "failed": 1,
+   "cancelled_by_dependency": 25,
+   "gpu_hours": 0.02
+  },
+  {
+   "run": "am2m-20261012-222615",
+   "jobs": 26,
+   "failed": 1,
+   "cancelled_by_dependency": 25,
+   "gpu_hours": 0.27
+  },
+  {
+   "run": "am2m-20261012-232844",
+   "jobs": 26,
+   "failed": 1,
+   "cancelled_by_dependency": 25,
+   "gpu_hours": 0.02
+  }
+ ],
+ "sacct_states": {
+  "CANCELLED": 128,
+  "FAILED": 3,
+  "COMPLETED": 35,
+  "RUNNING": 15,
+  "PENDING": 7
+ }
+}

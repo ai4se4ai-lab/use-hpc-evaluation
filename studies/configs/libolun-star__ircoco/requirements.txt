@@ -1,0 +1,9 @@
+# executability probe: the artefact's declared dependencies
+torch==2.1.2
+tqdm
+javalang
+pyext
+deepspeed
+numpy<2
+huggingface_hub
+fuzzywuzzy

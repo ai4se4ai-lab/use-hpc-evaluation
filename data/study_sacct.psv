@@ -1,0 +1,75 @@
+23926457|r_llm4perf_setup|FAILED|2026-10-13T20:38:10|2026-10-13T20:42:23|2026-10-13T20:42:34|11|billing=1742,cpu=2,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=16G,node=1|4:0|g30
+23926458|r_llm4perf_main|CANCELLED|2026-10-13T20:38:10|None|2026-10-13T20:42:39|0||0:0|None assigned
+23926459|r_llm4perf_collect|CANCELLED by 3152398|2026-10-13T20:38:10|None|2026-10-13T20:45:12|0||0:0|None assigned
+23926810|r_retrigen_setup|CANCELLED by 3152398|2026-10-13T20:41:18|None|2026-10-13T20:45:12|0||0:0|None assigned
+23926811|r_retrigen_retrieve|CANCELLED by 3152398|2026-10-13T20:41:18|None|2026-10-13T20:45:12|0||0:0|None assigned
+23926812|r_retrigen_finetune|CANCELLED by 3152398|2026-10-13T20:41:19|None|2026-10-13T20:45:12|0||0:0|None assigned
+23926813|r_retrigen_collect|CANCELLED by 3152398|2026-10-13T20:41:19|None|2026-10-13T20:45:12|0||0:0|None assigned
+23927098|r_robust_setup|CANCELLED by 3152398|2026-10-13T20:44:38|None|2026-10-13T20:45:12|0||0:0|None assigned
+23927099|r_robust_main|CANCELLED by 3152398|2026-10-13T20:44:38|None|2026-10-13T20:45:12|0||0:0|None assigned
+23927100|r_robust_collect|CANCELLED by 3152398|2026-10-13T20:44:39|None|2026-10-13T20:45:12|0||0:0|None assigned
+23927151|r_llm4perf_setup|FAILED|2026-10-13T20:45:18|2026-10-13T20:56:40|2026-10-13T21:41:06|2666|billing=1742,cpu=2,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=16G,node=1|1:0|g30
+23927152|r_llm4perf_main|CANCELLED|2026-10-13T20:45:18|None|2026-10-13T21:41:09|0||0:0|None assigned
+23927153|r_llm4perf_collect|COMPLETED|2026-10-13T20:45:19|2026-10-13T21:46:11|2026-10-13T21:46:36|25|billing=1742,cpu=2,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=8G,node=1|0:0|g30
+23927154|r_retrigen_setup|FAILED|2026-10-13T20:45:21|2026-10-13T20:56:40|2026-10-13T20:56:52|12|billing=3485,cpu=4,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=16G,node=1|4:0|g30
+23927155|r_retrigen_retrieve|CANCELLED|2026-10-13T20:45:21|None|2026-10-13T20:56:54|0||0:0|None assigned
+23927156|r_retrigen_finetune|CANCELLED|2026-10-13T20:45:21|None|2026-10-13T20:56:54|0||0:0|None assigned
+23927157|r_retrigen_collect|FAILED|2026-10-13T20:45:21|2026-10-13T21:11:24|2026-10-13T21:11:38|14|billing=1742,cpu=2,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=16G,node=1|4:0|g33
+23927162|r_robust_setup|COMPLETED|2026-10-13T20:45:25|2026-10-13T20:56:40|2026-10-13T20:58:26|106|billing=3485,cpu=4,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=16G,node=1|0:0|g30
+23927163|r_robust_main|CANCELLED by 3152398|2026-10-13T20:45:25|None|2026-10-13T21:47:09|0||0:0|None assigned
+23927164|r_robust_collect|CANCELLED by 3152398|2026-10-13T20:45:25|None|2026-10-13T21:47:09|0||0:0|None assigned
+23927388|r_execre_setup|FAILED|2026-10-13T20:47:36|2026-10-13T20:56:40|2026-10-13T20:56:52|12|billing=3485,cpu=4,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=32G,node=1|4:0|g30
+23927389|r_execre_main_qwen|CANCELLED|2026-10-13T20:47:36|None|2026-10-13T20:56:54|0||0:0|None assigned
+23927390|r_execre_main_llama|CANCELLED|2026-10-13T20:47:36|None|2026-10-13T20:56:54|0||0:0|None assigned
+23927391|r_execre_collect|FAILED|2026-10-13T20:47:36|2026-10-13T21:21:21|2026-10-13T21:21:34|13|billing=1742,cpu=2,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=8G,node=1|4:0|g30
+23927421|r_provguard_setup|FAILED|2026-10-13T20:49:05|2026-10-13T20:56:40|2026-10-13T20:57:02|22|billing=3485,cpu=4,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=16G,node=1|4:0|g30
+23927422|r_provguard_main|CANCELLED|2026-10-13T20:49:05|None|2026-10-13T20:57:09|0||0:0|None assigned
+23927423|r_provguard_collect|FAILED|2026-10-13T20:49:05|2026-10-13T21:21:21|2026-10-13T21:21:34|13|billing=1742,cpu=2,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=8G,node=1|4:0|g30
+23927465|r_binspd_setup|FAILED|2026-10-13T20:51:25|2026-10-13T20:56:40|2026-10-13T20:57:02|22|billing=3485,cpu=4,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=16G,node=1|4:0|g30
+23927466|r_binspd_main|CANCELLED|2026-10-13T20:51:25|None|2026-10-13T20:57:09|0||0:0|None assigned
+23927467|r_binspd_collect|FAILED|2026-10-13T20:51:25|2026-10-13T21:26:19|2026-10-13T21:26:35|16|billing=1742,cpu=2,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=8G,node=1|4:0|g30
+23927597|r_probe_semguard_setup|CANCELLED by 3152398|2026-10-13T20:54:37|None|2026-10-13T20:54:43|0||0:0|None assigned
+23927598|r_probe_semguard_probe|CANCELLED by 3152398|2026-10-13T20:54:37|None|2026-10-13T20:54:43|0||0:0|None assigned
+23927599|r_probe_semguard_collect|CANCELLED by 3152398|2026-10-13T20:54:37|None|2026-10-13T20:54:43|0||0:0|None assigned
+23927609|r_probe_semguard_setup|CANCELLED by 3152398|2026-10-13T20:54:52|None|2026-10-13T21:10:10|0||0:0|None assigned
+23927610|r_probe_semguard_probe|CANCELLED by 3152398|2026-10-13T20:54:52|None|2026-10-13T21:10:10|0||0:0|None assigned
+23927611|r_probe_semguard_collect|CANCELLED by 3152398|2026-10-13T20:54:52|None|2026-10-13T21:10:10|0||0:0|None assigned
+23927871|r_probe_logreasoner_setup|CANCELLED by 3152398|2026-10-13T21:01:08|None|2026-10-13T21:10:10|0||0:0|None assigned
+23927872|r_probe_logreasoner_probe|CANCELLED by 3152398|2026-10-13T21:01:09|None|2026-10-13T21:10:11|0||0:0|None assigned
+23927873|r_probe_logreasoner_collect|CANCELLED by 3152398|2026-10-13T21:01:09|None|2026-10-13T21:10:11|0||0:0|None assigned
+23927896|r_probe_effiskel_setup|CANCELLED by 3152398|2026-10-13T21:01:21|None|2026-10-13T21:10:10|0||0:0|None assigned
+23927897|r_probe_effiskel_probe|CANCELLED by 3152398|2026-10-13T21:01:21|None|2026-10-13T21:10:10|0||0:0|None assigned
+23927898|r_probe_effiskel_collect|CANCELLED by 3152398|2026-10-13T21:01:21|None|2026-10-13T21:10:10|0||0:0|None assigned
+23927905|r_probe_ircoco_setup|CANCELLED by 3152398|2026-10-13T21:01:31|None|2026-10-13T21:10:10|0||0:0|None assigned
+23927906|r_probe_ircoco_probe|CANCELLED by 3152398|2026-10-13T21:01:31|None|2026-10-13T21:10:10|0||0:0|None assigned
+23927907|r_probe_ircoco_collect|CANCELLED by 3152398|2026-10-13T21:01:33|None|2026-10-13T21:10:10|0||0:0|None assigned
+23928015|r_execre_setup|FAILED|2026-10-13T21:05:10|2026-10-13T21:16:21|2026-10-13T21:20:05|224|billing=3485,cpu=4,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=32G,node=1|1:0|g36
+23928016|r_execre_main_qwen|CANCELLED|2026-10-13T21:05:10|None|2026-10-13T21:20:07|0||0:0|None assigned
+23928017|r_execre_main_llama|CANCELLED|2026-10-13T21:05:10|None|2026-10-13T21:20:07|0||0:0|None assigned
+23928018|r_execre_collect|COMPLETED|2026-10-13T21:05:10|2026-10-13T21:31:17|2026-10-13T21:32:28|71|billing=1742,cpu=2,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=8G,node=1|0:0|g30
+23928020|r_provguard_setup|COMPLETED|2026-10-13T21:05:13|2026-10-13T21:16:21|2026-10-13T21:18:52|151|billing=3485,cpu=4,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=16G,node=1|0:0|g36
+23928021|r_provguard_main|CANCELLED by 3152398|2026-10-13T21:05:13|None|2026-10-13T21:47:09|0||0:0|None assigned
+23928022|r_provguard_collect|CANCELLED by 3152398|2026-10-13T21:05:13|None|2026-10-13T21:47:09|0||0:0|None assigned
+23928023|r_binspd_setup|COMPLETED|2026-10-13T21:05:17|2026-10-13T21:16:21|2026-10-13T21:17:35|74|billing=3485,cpu=4,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=16G,node=1|0:0|g30
+23928024|r_binspd_main|CANCELLED by 3152398|2026-10-13T21:05:17|None|2026-10-13T21:47:09|0||0:0|None assigned
+23928025|r_binspd_collect|CANCELLED by 3152398|2026-10-13T21:05:17|None|2026-10-13T21:47:09|0||0:0|None assigned
+23928229|r_retrigen_setup|FAILED|2026-10-13T21:10:12|2026-10-13T21:21:20|2026-10-13T21:39:39|1099|billing=3485,cpu=4,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=16G,node=1|1:0|g30
+23928230|r_retrigen_retrieve|CANCELLED|2026-10-13T21:10:12|None|2026-10-13T21:39:41|0||0:0|None assigned
+23928231|r_retrigen_finetune|CANCELLED|2026-10-13T21:10:13|None|2026-10-13T21:39:41|0||0:0|None assigned
+23928232|r_retrigen_collect|FAILED|2026-10-13T21:10:13|2026-10-13T21:41:16|2026-10-13T21:42:01|45|billing=1742,cpu=2,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=16G,node=1|1:0|g31
+23928253|r_probe_logreasoner_setup|CANCELLED by 3152398|2026-10-13T21:10:18|None|2026-10-13T21:47:09|0||0:0|None assigned
+23928254|r_probe_logreasoner_probe|CANCELLED by 3152398|2026-10-13T21:10:18|None|2026-10-13T21:47:09|0||0:0|None assigned
+23928255|r_probe_logreasoner_collect|CANCELLED by 3152398|2026-10-13T21:10:18|None|2026-10-13T21:47:09|0||0:0|None assigned
+23928758|r_probe_semguard_setup|CANCELLED by 3152398|2026-10-13T21:19:29|None|2026-10-13T21:47:09|0||0:0|None assigned
+23928759|r_probe_semguard_probe|CANCELLED by 3152398|2026-10-13T21:19:29|None|2026-10-13T21:47:09|0||0:0|None assigned
+23928760|r_probe_semguard_collect|CANCELLED by 3152398|2026-10-13T21:19:29|None|2026-10-13T21:47:09|0||0:0|None assigned
+23928761|r_probe_effiskel_setup|CANCELLED by 3152398|2026-10-13T21:19:39|None|2026-10-13T21:47:09|0||0:0|None assigned
+23928762|r_probe_effiskel_probe|CANCELLED by 3152398|2026-10-13T21:19:41|None|2026-10-13T21:47:09|0||0:0|None assigned
+23928763|r_probe_effiskel_collect|CANCELLED by 3152398|2026-10-13T21:19:41|None|2026-10-13T21:47:09|0||0:0|None assigned
+23928765|r_probe_ircoco_setup|CANCELLED by 3152398|2026-10-13T21:19:50|None|2026-10-13T21:47:09|0||0:0|None assigned
+23928766|r_probe_ircoco_probe|CANCELLED by 3152398|2026-10-13T21:19:50|None|2026-10-13T21:47:09|0||0:0|None assigned
+23928767|r_probe_ircoco_collect|CANCELLED by 3152398|2026-10-13T21:19:50|None|2026-10-13T21:47:09|0||0:0|None assigned
+23929367|r_execre_setup|COMPLETED|2026-10-13T21:32:34|2026-10-13T21:41:16|2026-10-13T21:45:58|282|billing=3485,cpu=4,gres/gpu:nvidia_h100_80gb_hbm3_1g.10gb=1,gres/gpu=1,mem=32G,node=1|0:0|g31
+23929368|r_execre_main_qwen|CANCELLED by 3152398|2026-10-13T21:32:34|None|2026-10-13T21:47:09|0||0:0|None assigned
+23929369|r_execre_main_llama|CANCELLED by 3152398|2026-10-13T21:32:34|None|2026-10-13T21:47:09|0||0:0|None assigned
+23929370|r_execre_collect|CANCELLED by 3152398|2026-10-13T21:32:34|None|2026-10-13T21:47:09|0||0:0|None assigned

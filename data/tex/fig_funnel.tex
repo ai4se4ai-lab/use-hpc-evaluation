@@ -1,0 +1,8 @@
+\begin{tikzpicture}
+\begin{axis}[xbar, xmode=log, log basis x=10, width=0.85\textwidth, height=5.2cm,
+  symbolic y coords={0,1,2,3,3b,3c,4,5,6}, ytick=data, y dir=reverse, xlabel={papers / repositories remaining (log)},
+  ylabel={round}, point meta=explicit symbolic, nodes near coords, nodes near coords style={font=\scriptsize}, xmin=1, bar width=7pt,
+  xmajorgrids, grid style={black!12}, enlarge y limits=0.08]
+\addplot[fill=modelbar!70, draw=modelbar] coordinates {(4814,0) [4{,}814] (4187,1) [4{,}187] (1574,2) [1{,}574] (584,3) [584] (569,3b) [569] (474,3c) [474] (310,4) [310] (118,5) [118] (10,6) [10]};
+\end{axis}
+\end{tikzpicture}

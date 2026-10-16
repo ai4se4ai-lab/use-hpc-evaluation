@@ -1,0 +1,129 @@
+{
+ "_repro": {
+  "paper": "Code LLMs for binary security patch detection (TOSEM 2026)",
+  "src_dirs": ".",
+  "hash_dirs": "LLM-online evaluation",
+  "modules": "StdEnv/2023 python/3.11 arrow/24.0.0 opencv/4.13.0"
+ },
+ "project": "r_binspd",
+ "require_gpu": true,
+ "vars": {
+  "N": ""
+ },
+ "smoke": {
+  "vars": {
+   "N": "20"
+  },
+  "time": "00:55:00",
+  "matrix_limit": 1
+ },
+ "stages": [
+  {
+   "name": "setup",
+   "description": "Qwen2.5-Coder-7B-Instruct weights; released test splits; re-score shipped GPT-3.5/DeepSeek-R1 predictions",
+   "internet": true,
+   "resources": {
+    "gpus": "h100_1g.10gb:1",
+    "cpus": 4,
+    "mem": "16G",
+    "time": "02:00:00"
+   },
+   "steps": [
+    {
+     "name": "check_gpu",
+     "builtin": "check_gpu",
+     "always": true
+    },
+    {
+     "name": "model",
+     "cmd": "HF_HUB_OFFLINE=0 python -c \"from huggingface_hub import snapshot_download as s; print(s('Qwen/Qwen2.5-Coder-7B-Instruct'))\"",
+     "critical": true
+    },
+    {
+     "name": "data",
+     "cmd": "mkdir -p {RESULTS}/data && tar -xjf {REPO}/data/alpaca_data.tar.bz2 -C {RESULTS}/data",
+     "produces": [
+      "data/alpaca_data/pseudo_code/test.json"
+     ],
+     "critical": true
+    },
+    {
+     "name": "rescore_shipped",
+     "cmd": "python {HPC}/compare.py {RESULTS} {HPC}/reported.csv",
+     "always": true
+    }
+   ]
+  },
+  {
+   "name": "main",
+   "description": "Table 1 zero-shot: the authors' LLM-online/llm_online.py against a local vLLM (Qwen2.5-Coder-7B-Instruct)",
+   "depends": [
+    {
+     "stage": "setup",
+     "type": "afterok"
+    }
+   ],
+   "matrix": {
+    "dataset": [
+     "pseudo_code",
+     "assembly_code"
+    ]
+   },
+   "resources": {
+    "gpus": "h100_3g.40gb:1",
+    "cpus": 6,
+    "mem": "48G",
+    "time": "12:00:00",
+    "requeue": true
+   },
+   "steps": [
+    {
+     "name": "predict",
+     "cmd": "W={RESULTS}; mkdir -p $W/run_online/test_data && cp {REPO}/LLM-online/llm_online.py $W/run_online/ && python -c \"import json,sys; d=json.load(open('{RESULTS}/data/alpaca_data/{dataset}/test.json')); n='{N}'; d=d[:int(n)] if n else d; json.dump(d, open('$W/run_online/test_data/{dataset}.json','w'))\" && cd $W/run_online && python llm_online.py -u $OPENAI_BASE_URL -k local -m Qwen2.5-Coder-7B-Instruct -d {dataset} -t 16384 && mkdir -p {RESULTS}/saves && cp -r saves/{dataset} {RESULTS}/saves/",
+     "produces": [
+      "saves/{dataset}/Qwen2.5-Coder-7B-Instruct/generated_predictions.jsonl"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "collect",
+   "depends": [
+    {
+     "stage": "main",
+     "type": "afterany"
+    }
+   ],
+   "resources": {
+    "gpus": "h100_1g.10gb:1",
+    "cpus": 2,
+    "mem": "8G",
+    "time": "01:00:00"
+   },
+   "steps": [
+    {
+     "name": "compare",
+     "cmd": "python {HPC}/compare.py {RESULTS} {HPC}/reported.csv",
+     "always": true
+    },
+    {
+     "name": "collect",
+     "builtin": "collect",
+     "always": true
+    }
+   ]
+  }
+ ],
+ "results": {
+  "tables": [
+   {
+    "name": "comparison",
+    "glob": "compare/comparison.csv"
+   }
+  ],
+  "copy": [
+   "compare/*",
+   "saves/**"
+  ]
+ }
+}

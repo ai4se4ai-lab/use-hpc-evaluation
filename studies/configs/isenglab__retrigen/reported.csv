@@ -1,0 +1,9 @@
+key,metric,reported,tolerance,source,comparable
+old|rescored-shipped,accuracy,64.09,0.5,Table 3 (Data_old),yes
+old|rescored-shipped,codebleu,79.79,2,Table 3 (Data_old),yes
+new|rescored-shipped,accuracy,51.22,0.5,Table 3 (Data_new),yes
+new|rescored-shipped,codebleu,66.68,2,Table 3 (Data_new),yes
+old|rerun,accuracy,64.09,2,Table 3 (Data_old),yes
+old|rerun,codebleu,79.79,2,Table 3 (Data_old),yes
+new|rerun,accuracy,51.22,2,Table 3 (Data_new),yes
+new|rerun,codebleu,66.68,2,Table 3 (Data_new),yes

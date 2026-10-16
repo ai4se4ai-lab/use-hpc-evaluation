@@ -1,0 +1,184 @@
+{
+ "_repro": {
+  "paper": "ExeCRE (ASE 2026)",
+  "src_dirs": ". src",
+  "hash_dirs": "src configs",
+  "modules": "StdEnv/2023 python/3.11 arrow/24.0.0 opencv/4.13.0"
+ },
+ "project": "r_execre",
+ "require_gpu": true,
+ "vars": {
+  "SMOKEFLAG": ""
+ },
+ "smoke": {
+  "vars": {
+   "SMOKEFLAG": "--smoke"
+  },
+  "time": "00:55:00",
+  "matrix_limit": 1
+ },
+ "stages": [
+  {
+   "name": "setup",
+   "description": "download Qwen2.5-Coder-32B-Instruct and Llama-3.1-8B-Instruct (bf16) and LiveCodeBench release_latest",
+   "internet": true,
+   "resources": {
+    "gpus": "h100_1g.10gb:1",
+    "cpus": 4,
+    "mem": "32G",
+    "time": "03:00:00"
+   },
+   "steps": [
+    {
+     "name": "check_gpu",
+     "builtin": "check_gpu",
+     "always": true
+    },
+    {
+     "name": "models",
+     "cmd": "HF_HUB_OFFLINE=0 python -c \"from huggingface_hub import snapshot_download as s; [print(s(m, allow_patterns=['*.json','*.safetensors','tokenizer*','*.model','*.txt'])) for m in ('unsloth/Meta-Llama-3.1-8B-Instruct', 'Qwen/Qwen2.5-Coder-32B-Instruct')]\"",
+     "critical": true
+    },
+    {
+     "name": "livecodebench",
+     "cmd": "cd {REPO} && HF_HUB_OFFLINE=0 HF_DATASETS_OFFLINE=0 python -c \"import sys; sys.path.insert(0,'src/benchmark_repo/LiveCodeBench'); from lcb_runner.benchmarks.code_generation import load_code_generation_dataset as L; print(len(L('release_latest', start_date='2025-01-01', end_date='2025-05-01')))\" | tee {RESULTS}/setup/lcb_count.txt",
+     "critical": true,
+     "env": {
+      "HF_DATASETS_TRUST_REMOTE_CODE": "1"
+     }
+    }
+   ]
+  },
+  {
+   "name": "main_qwen",
+   "description": "Qwen2.5-Coder-32B-Instruct (vLLM, bf16): Base, TextGrad, ExeCRE on LiveCodeBench 2025-01..05, n=5 runs (authors' configs)",
+   "depends": [
+    {
+     "stage": "setup",
+     "type": "afterok"
+    }
+   ],
+   "matrix": {
+    "method": [
+     "execre",
+     "base",
+     "textgrad"
+    ]
+   },
+   "resources": {
+    "gpus": "h100:1",
+    "cpus": 12,
+    "mem": "96G",
+    "time": "24:00:00",
+    "requeue": true
+   },
+   "steps": [
+    {
+     "name": "run",
+     "cmd": "cd {REPO} && python {HPC}/glue_execre.py {method} qwen32b {RESULTS}/cfg/qwen32b_{method}.json {SMOKEFLAG} && ONLINE_BASE_URL=$OPENAI_BASE_URL ONLINE_API_KEY=local HF_DATASETS_OFFLINE=1 python main.py --config {RESULTS}/cfg/qwen32b_{method}.json",
+     "env": {
+      "HF_DATASETS_TRUST_REMOTE_CODE": "1"
+     }
+    },
+    {
+     "name": "score",
+     "cmd": "mkdir -p {RESULTS}/scores && cd {REPO} && HF_DATASETS_OFFLINE=1 python -m src.experiments.solution_chain --config_file {RESULTS}/cfg/qwen32b_{method}.json --skip_generate --skip_evaluate 2>&1 | tee {RESULTS}/scores/qwen32b_{method}.txt",
+     "produces": [
+      "scores/qwen32b_{method}.txt"
+     ],
+     "env": {
+      "HF_DATASETS_TRUST_REMOTE_CODE": "1"
+     }
+    }
+   ]
+  },
+  {
+   "name": "main_llama",
+   "description": "Llama-3.1-8B-Instruct (vLLM, bf16): same three methods",
+   "depends": [
+    {
+     "stage": "setup",
+     "type": "afterok"
+    }
+   ],
+   "matrix": {
+    "method": [
+     "execre",
+     "base",
+     "textgrad"
+    ]
+   },
+   "resources": {
+    "gpus": "h100_3g.40gb:1",
+    "cpus": 8,
+    "mem": "64G",
+    "time": "24:00:00",
+    "requeue": true
+   },
+   "steps": [
+    {
+     "name": "run",
+     "cmd": "cd {REPO} && python {HPC}/glue_execre.py {method} llama8b {RESULTS}/cfg/llama8b_{method}.json {SMOKEFLAG} && ONLINE_BASE_URL=$OPENAI_BASE_URL ONLINE_API_KEY=local HF_DATASETS_OFFLINE=1 python main.py --config {RESULTS}/cfg/llama8b_{method}.json",
+     "env": {
+      "HF_DATASETS_TRUST_REMOTE_CODE": "1"
+     }
+    },
+    {
+     "name": "score",
+     "cmd": "mkdir -p {RESULTS}/scores && cd {REPO} && HF_DATASETS_OFFLINE=1 python -m src.experiments.solution_chain --config_file {RESULTS}/cfg/llama8b_{method}.json --skip_generate --skip_evaluate 2>&1 | tee {RESULTS}/scores/llama8b_{method}.txt",
+     "produces": [
+      "scores/llama8b_{method}.txt"
+     ],
+     "env": {
+      "HF_DATASETS_TRUST_REMOTE_CODE": "1"
+     }
+    }
+   ]
+  },
+  {
+   "name": "collect",
+   "depends": [
+    {
+     "stage": "main_qwen",
+     "type": "afterany"
+    },
+    {
+     "stage": "main_llama",
+     "type": "afterany"
+    }
+   ],
+   "resources": {
+    "gpus": "h100_1g.10gb:1",
+    "cpus": 2,
+    "mem": "8G",
+    "time": "01:00:00"
+   },
+   "steps": [
+    {
+     "name": "compare",
+     "cmd": "python {HPC}/compare.py {RESULTS} {HPC}/reported.csv",
+     "always": true
+    },
+    {
+     "name": "collect",
+     "builtin": "collect",
+     "always": true
+    }
+   ]
+  }
+ ],
+ "results": {
+  "tables": [
+   {
+    "name": "comparison",
+    "glob": "compare/comparison.csv"
+   }
+  ],
+  "copy": [
+   "compare/*",
+   "scores/*",
+   "cfg/*",
+   "setup/*"
+  ]
+ }
+}

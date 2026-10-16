@@ -1,0 +1,11 @@
+id,repo,venue,mode,models,executed_subset,comparison_target
+R1,wwwql/semguard,ASE'25,probe,StarCoder2-7B; DeepSeek-Coder-1.3B (evaluator),every README entry point (train base; train evaluator; generate; test),Table III pass@1 on SemDiff (not comparable if the chain fails)
+R2,cmu-soda/provenanceguard,ASE'26,full,Qwen3.5-9B (vLLM bf16),3 methods x 2 benchmarks x 5 runs; re-score of shipped runs,Tables 2-3 error and intervention rates
+R3,isenglab/retrigen,TOSEM'25,full,CodeLlama-7B (Ollama) + CodeT5-base,retrieval (IR + embeddings + hybrid) and 75-epoch fine-tuning on both datasets; re-score of shipped predictions,Table 3 accuracy and CodeBLEU
+R4,moyi-dong/execre,ASE'26,full,Qwen2.5-Coder-32B-Instruct; Llama-3.1-8B-Instruct (vLLM bf16),Base / TextGrad / ExeCRE on LiveCodeBench 2025-01..05 (n=5),Table 2 overall Pass@1
+R5,yyyy-yuyu/effiskel,FSE'26,probe,DeepSeek-Coder-6.7B,every README entry point (data processing; training; generation; test),efficiency tables (not comparable if the chain fails)
+R6,anonauthors123/llm-for-binary-spd,TOSEM'26,full,Qwen2.5-Coder-7B-Instruct (vLLM),zero-shot prompting on pseudo-code and assembly test sets; re-score of shipped API predictions,Table 1 accuracy / F1 / FPR / failure rate (fine-tuning tables not comparable: no training data or adapters)
+R7,libolun-star/ircoco,FSE'24,probe,GPT-2 / CodeGPT,every README entry point (preprocess; external SFT; evaluator; RL; evaluation),token-level completion tables (not comparable if the chain fails)
+R8,frabbisw/robustextended,EMSE'26,full,CodeGen-2B-multi; Qwen2.5-Coder-7B-Instruct,nominal + partial + 6 format perturbations x 5 seeds in Java/C++/JS,Tables 8-9 RP5@1
+R9,klsc749/llm4perf,ICSE'26,full,Qwen2.5-7B/32B-instruct (Ollama),sampler on 4 systems (budget 20; 10 repetitions),performance-model accuracy (not comparable: evaluation code missing)
+R10,leaperovo/logreasoner,TOSEM'26,probe,Llama-3-8B-Instruct,every README entry point (SFT; DPO; vLLM inference),LDSM results (not comparable if the chain fails)

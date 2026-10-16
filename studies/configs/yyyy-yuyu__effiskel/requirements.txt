@@ -1,0 +1,11 @@
+# executability probe: the artefact's declared dependencies
+torch==2.4.1
+accelerate
+peft
+bitsandbytes
+numpy<2
+tqdm
+sentencepiece
+huggingface_hub
+gdown
+pyext

@@ -1,0 +1,18 @@
+\begin{tabularx}{\textwidth}{@{}l l l r >{\raggedright\arraybackslash}X c >{\raggedright\arraybackslash}p{3.4cm} r@{}}
+\toprule
+Run & Artefact & Gate & Time & First failure & Dep.\ canc. & Collector ($\mathit{any}$) & H100-h \\
+\midrule
+R2-a & ProvenanceGuard & failed & 22\,s & wheel: opencv-noinstall & 1/1 & failed (wheel: opencv-noinstall) & 0.001 \\
+R2-b & ProvenanceGuard & passed & 151\,s & -- & 0/1 & cancelled & 0.006 \\
+R3-b & RetriGen & failed & 12\,s & wheel: numpy==1.26.2 & 2/2 & failed (wheel: numpy==1.26.2) & 0.001 \\
+R3-c & RetriGen & failed & 1{,}099\,s & step rescore\_shipped rc=1 & 2/2 & failed (step compare rc=1) & 0.045 \\
+R4-a & ExeCRE & failed & 12\,s & wheel: crowd-kit & 2/2 & failed (wheel: opencv-noinstall) & 0.001 \\
+R4-b & ExeCRE & failed & 224\,s & step livecodebench rc=1 & 2/2 & completed & 0.012 \\
+R4-c & ExeCRE & passed & 282\,s & -- & 0/2 & cancelled & 0.011 \\
+R6-a & BinarySPD & failed & 22\,s & wheel: opencv-noinstall & 1/1 & failed (wheel: opencv-noinstall) & 0.002 \\
+R6-b & BinarySPD & passed & 74\,s & -- & 0/1 & cancelled & 0.003 \\
+R8-b & RobustExt & passed & 106\,s & -- & 0/1 & cancelled & 0.004 \\
+R9-a & LLM4Perf & failed & 11\,s & wheel: numpy (wheelhouse hidden: PIP\_FIND\_LINKS) & 1/1 & cancelled & $<$0.001 \\
+R9-b & LLM4Perf & failed & 2{,}666\,s & step models\_present rc=141 & 1/1 & completed & 0.107 \\
+\bottomrule
+\end{tabularx}

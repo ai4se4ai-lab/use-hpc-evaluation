@@ -1,0 +1,10 @@
+key,metric,reported,tolerance,source,comparable
+env_python37_torch191,exit_code,0,0,README step,yes
+env_vendored_transformers_4161,exit_code,0,0,README step,yes
+1_preprocess_py150,exit_code,0,0,README step,yes
+2_sft_codexglue_external,exit_code,0,0,README step,yes
+3_generate_score,exit_code,0,0,README step,yes
+4_train_estimator,exit_code,0,0,README step,yes
+5_train_rl,exit_code,0,0,README step,yes
+6_evaluator,exit_code,0,0,README step,yes
+gpt2|py150,token-level accuracy,,,Tables (IRCoCo),evaluated only if the documented chain runs (see probe)

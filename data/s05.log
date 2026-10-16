@@ -1,0 +1,12 @@
+round  description  remaining
+0  ICSE/FSE/ASE/TSE/EMSE/TOSEM 2024-2026 (OpenAlex)  4814
+1  research papers  4187
+2  LLM topic (title/abstract)  1574
+3  paper links a GitHub artefact (full text)  584
+3b  distinct repositories  569
+3c  reachable and cloneable  474
+4  uses open-weight models  310
+5  Python, dependencies, run commands, maintained  118
+6  manual feasibility M1-M6 (screened in rank order: 0)  0
+shortlist: 118 -> data/shortlist.csv; selected: 0
+CHAIN_DONE

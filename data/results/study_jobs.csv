@@ -1,0 +1,76 @@
+id,repo,mode,run,job,stage,dependency,state,cancelled_by,submit,start,end,elapsed_s,h100_eq_hours,cause
+R1,wwwql/semguard,probe,am-20261013-205443,23927609,setup,,CANCELLED,operator,2026-10-13T20:54:52,None,2026-10-13T21:10:10,0,0.0,
+R1,wwwql/semguard,probe,am-20261013-205443,23927610,probe,afterany:23927609,CANCELLED,operator,2026-10-13T20:54:52,None,2026-10-13T21:10:10,0,0.0,
+R1,wwwql/semguard,probe,am-20261013-205443,23927611,collect,afterany:23927610,CANCELLED,operator,2026-10-13T20:54:52,None,2026-10-13T21:10:10,0,0.0,
+R1,wwwql/semguard,probe,am-20261013-211917,23928758,setup,,CANCELLED,operator,2026-10-13T21:19:29,None,2026-10-13T21:47:09,0,0.0,
+R1,wwwql/semguard,probe,am-20261013-211917,23928759,probe,afterany:23928758,CANCELLED,operator,2026-10-13T21:19:29,None,2026-10-13T21:47:09,0,0.0,
+R1,wwwql/semguard,probe,am-20261013-211917,23928760,collect,afterany:23928759,CANCELLED,operator,2026-10-13T21:19:29,None,2026-10-13T21:47:09,0,0.0,
+R1,wwwql/semguard,probe,am-smoke-20261013-205420,23927597,setup,,CANCELLED,operator,2026-10-13T20:54:37,None,2026-10-13T20:54:43,0,0.0,
+R1,wwwql/semguard,probe,am-smoke-20261013-205420,23927598,probe,afterany:23927597,CANCELLED,operator,2026-10-13T20:54:37,None,2026-10-13T20:54:43,0,0.0,
+R1,wwwql/semguard,probe,am-smoke-20261013-205420,23927599,collect,afterany:23927598,CANCELLED,operator,2026-10-13T20:54:37,None,2026-10-13T20:54:43,0,0.0,
+R2,cmu-soda/provenanceguard,full,am-smoke-20261013-204903,23927421,setup,,FAILED,,2026-10-13T20:49:05,2026-10-13T20:56:40,2026-10-13T20:57:02,22,0.0009,wheel: opencv-noinstall
+R2,cmu-soda/provenanceguard,full,am-smoke-20261013-204903,23927422,main,afterok:23927421,CANCELLED,dependency,2026-10-13T20:49:05,None,2026-10-13T20:57:09,0,0.0,
+R2,cmu-soda/provenanceguard,full,am-smoke-20261013-204903,23927423,collect,afterany:23927422,FAILED,,2026-10-13T20:49:05,2026-10-13T21:21:21,2026-10-13T21:21:34,13,0.0005,wheel: opencv-noinstall
+R2,cmu-soda/provenanceguard,full,am-smoke-20261013-210511,23928020,setup,,COMPLETED,,2026-10-13T21:05:13,2026-10-13T21:16:21,2026-10-13T21:18:52,151,0.006,
+R2,cmu-soda/provenanceguard,full,am-smoke-20261013-210511,23928021,main,afterok:23928020,CANCELLED,operator,2026-10-13T21:05:13,None,2026-10-13T21:47:09,0,0.0,
+R2,cmu-soda/provenanceguard,full,am-smoke-20261013-210511,23928022,collect,afterany:23928021,CANCELLED,operator,2026-10-13T21:05:13,None,2026-10-13T21:47:09,0,0.0,
+R3,isenglab/retrigen,full,am-smoke-20261013-204113,23926810,setup,,CANCELLED,operator,2026-10-13T20:41:18,None,2026-10-13T20:45:12,0,0.0,
+R3,isenglab/retrigen,full,am-smoke-20261013-204113,23926811,retrieve,afterok:23926810,CANCELLED,operator,2026-10-13T20:41:18,None,2026-10-13T20:45:12,0,0.0,
+R3,isenglab/retrigen,full,am-smoke-20261013-204113,23926812,finetune,aftercorr:23926811,CANCELLED,operator,2026-10-13T20:41:19,None,2026-10-13T20:45:12,0,0.0,
+R3,isenglab/retrigen,full,am-smoke-20261013-204113,23926813,collect,afterany:23926812,CANCELLED,operator,2026-10-13T20:41:19,None,2026-10-13T20:45:12,0,0.0,
+R3,isenglab/retrigen,full,am-smoke-20261013-204519,23927154,setup,,FAILED,,2026-10-13T20:45:21,2026-10-13T20:56:40,2026-10-13T20:56:52,12,0.0005,wheel: numpy==1.26.2
+R3,isenglab/retrigen,full,am-smoke-20261013-204519,23927155,retrieve,afterok:23927154,CANCELLED,dependency,2026-10-13T20:45:21,None,2026-10-13T20:56:54,0,0.0,
+R3,isenglab/retrigen,full,am-smoke-20261013-204519,23927156,finetune,aftercorr:23927155,CANCELLED,dependency,2026-10-13T20:45:21,None,2026-10-13T20:56:54,0,0.0,
+R3,isenglab/retrigen,full,am-smoke-20261013-204519,23927157,collect,afterany:23927156,FAILED,,2026-10-13T20:45:21,2026-10-13T21:11:24,2026-10-13T21:11:38,14,0.0006,wheel: numpy==1.26.2
+R3,isenglab/retrigen,full,am-smoke-20261013-211011,23928229,setup,,FAILED,,2026-10-13T21:10:12,2026-10-13T21:21:20,2026-10-13T21:39:39,1099,0.0436,step rescore_shipped rc=1
+R3,isenglab/retrigen,full,am-smoke-20261013-211011,23928230,retrieve,afterok:23928229,CANCELLED,dependency,2026-10-13T21:10:12,None,2026-10-13T21:39:41,0,0.0,
+R3,isenglab/retrigen,full,am-smoke-20261013-211011,23928231,finetune,aftercorr:23928230,CANCELLED,dependency,2026-10-13T21:10:13,None,2026-10-13T21:39:41,0,0.0,
+R3,isenglab/retrigen,full,am-smoke-20261013-211011,23928232,collect,afterany:23928231,FAILED,,2026-10-13T21:10:13,2026-10-13T21:41:16,2026-10-13T21:42:01,45,0.0018,step compare rc=1
+R4,moyi-dong/execre,full,am-smoke-20261013-204732,23927388,setup,,FAILED,,2026-10-13T20:47:36,2026-10-13T20:56:40,2026-10-13T20:56:52,12,0.0005,wheel: crowd-kit
+R4,moyi-dong/execre,full,am-smoke-20261013-204732,23927389,main_qwen,afterok:23927388,CANCELLED,dependency,2026-10-13T20:47:36,None,2026-10-13T20:56:54,0,0.0,
+R4,moyi-dong/execre,full,am-smoke-20261013-204732,23927390,main_llama,afterok:23927388,CANCELLED,dependency,2026-10-13T20:47:36,None,2026-10-13T20:56:54,0,0.0,
+R4,moyi-dong/execre,full,am-smoke-20261013-204732,23927391,collect,"afterany:23927389,afterany:23927390",FAILED,,2026-10-13T20:47:36,2026-10-13T21:21:21,2026-10-13T21:21:34,13,0.0005,wheel: opencv-noinstall
+R4,moyi-dong/execre,full,am-smoke-20261013-210507,23928015,setup,,FAILED,,2026-10-13T21:05:10,2026-10-13T21:16:21,2026-10-13T21:20:05,224,0.0089,step livecodebench rc=1
+R4,moyi-dong/execre,full,am-smoke-20261013-210507,23928016,main_qwen,afterok:23928015,CANCELLED,dependency,2026-10-13T21:05:10,None,2026-10-13T21:20:07,0,0.0,
+R4,moyi-dong/execre,full,am-smoke-20261013-210507,23928017,main_llama,afterok:23928015,CANCELLED,dependency,2026-10-13T21:05:10,None,2026-10-13T21:20:07,0,0.0,
+R4,moyi-dong/execre,full,am-smoke-20261013-210507,23928018,collect,"afterany:23928016,afterany:23928017",COMPLETED,,2026-10-13T21:05:10,2026-10-13T21:31:17,2026-10-13T21:32:28,71,0.0028,
+R4,moyi-dong/execre,full,am-smoke-20261013-213232,23929367,setup,,COMPLETED,,2026-10-13T21:32:34,2026-10-13T21:41:16,2026-10-13T21:45:58,282,0.0112,
+R4,moyi-dong/execre,full,am-smoke-20261013-213232,23929368,main_qwen,afterok:23929367,CANCELLED,operator,2026-10-13T21:32:34,None,2026-10-13T21:47:09,0,0.0,
+R4,moyi-dong/execre,full,am-smoke-20261013-213232,23929369,main_llama,afterok:23929367,CANCELLED,operator,2026-10-13T21:32:34,None,2026-10-13T21:47:09,0,0.0,
+R4,moyi-dong/execre,full,am-smoke-20261013-213232,23929370,collect,"afterany:23929368,afterany:23929369",CANCELLED,operator,2026-10-13T21:32:34,None,2026-10-13T21:47:09,0,0.0,
+R5,yyyy-yuyu/effiskel,probe,am-20261013-210109,23927896,setup,,CANCELLED,operator,2026-10-13T21:01:21,None,2026-10-13T21:10:10,0,0.0,
+R5,yyyy-yuyu/effiskel,probe,am-20261013-210109,23927897,probe,afterany:23927896,CANCELLED,operator,2026-10-13T21:01:21,None,2026-10-13T21:10:10,0,0.0,
+R5,yyyy-yuyu/effiskel,probe,am-20261013-210109,23927898,collect,afterany:23927897,CANCELLED,operator,2026-10-13T21:01:21,None,2026-10-13T21:10:10,0,0.0,
+R5,yyyy-yuyu/effiskel,probe,am-20261013-211929,23928761,setup,,CANCELLED,operator,2026-10-13T21:19:39,None,2026-10-13T21:47:09,0,0.0,
+R5,yyyy-yuyu/effiskel,probe,am-20261013-211929,23928762,probe,afterany:23928761,CANCELLED,operator,2026-10-13T21:19:41,None,2026-10-13T21:47:09,0,0.0,
+R5,yyyy-yuyu/effiskel,probe,am-20261013-211929,23928763,collect,afterany:23928762,CANCELLED,operator,2026-10-13T21:19:41,None,2026-10-13T21:47:09,0,0.0,
+R6,anonauthors123/llm-for-binary-spd,full,am-smoke-20261013-205120,23927465,setup,,FAILED,,2026-10-13T20:51:25,2026-10-13T20:56:40,2026-10-13T20:57:02,22,0.0009,wheel: opencv-noinstall
+R6,anonauthors123/llm-for-binary-spd,full,am-smoke-20261013-205120,23927466,main,afterok:23927465,CANCELLED,dependency,2026-10-13T20:51:25,None,2026-10-13T20:57:09,0,0.0,
+R6,anonauthors123/llm-for-binary-spd,full,am-smoke-20261013-205120,23927467,collect,afterany:23927466,FAILED,,2026-10-13T20:51:25,2026-10-13T21:26:19,2026-10-13T21:26:35,16,0.0006,wheel: opencv-noinstall
+R6,anonauthors123/llm-for-binary-spd,full,am-smoke-20261013-210513,23928023,setup,,COMPLETED,,2026-10-13T21:05:17,2026-10-13T21:16:21,2026-10-13T21:17:35,74,0.0029,
+R6,anonauthors123/llm-for-binary-spd,full,am-smoke-20261013-210513,23928024,main,afterok:23928023,CANCELLED,operator,2026-10-13T21:05:17,None,2026-10-13T21:47:09,0,0.0,
+R6,anonauthors123/llm-for-binary-spd,full,am-smoke-20261013-210513,23928025,collect,afterany:23928024,CANCELLED,operator,2026-10-13T21:05:17,None,2026-10-13T21:47:09,0,0.0,
+R7,libolun-star/ircoco,probe,am-20261013-210121,23927905,setup,,CANCELLED,operator,2026-10-13T21:01:31,None,2026-10-13T21:10:10,0,0.0,
+R7,libolun-star/ircoco,probe,am-20261013-210121,23927906,probe,afterany:23927905,CANCELLED,operator,2026-10-13T21:01:31,None,2026-10-13T21:10:10,0,0.0,
+R7,libolun-star/ircoco,probe,am-20261013-210121,23927907,collect,afterany:23927906,CANCELLED,operator,2026-10-13T21:01:33,None,2026-10-13T21:10:10,0,0.0,
+R7,libolun-star/ircoco,probe,am-20261013-211941,23928765,setup,,CANCELLED,operator,2026-10-13T21:19:50,None,2026-10-13T21:47:09,0,0.0,
+R7,libolun-star/ircoco,probe,am-20261013-211941,23928766,probe,afterany:23928765,CANCELLED,operator,2026-10-13T21:19:50,None,2026-10-13T21:47:09,0,0.0,
+R7,libolun-star/ircoco,probe,am-20261013-211941,23928767,collect,afterany:23928766,CANCELLED,operator,2026-10-13T21:19:50,None,2026-10-13T21:47:09,0,0.0,
+R8,frabbisw/robustextended,full,am-smoke-20261013-204434,23927098,setup,,CANCELLED,operator,2026-10-13T20:44:38,None,2026-10-13T20:45:12,0,0.0,
+R8,frabbisw/robustextended,full,am-smoke-20261013-204434,23927099,main,afterok:23927098,CANCELLED,operator,2026-10-13T20:44:38,None,2026-10-13T20:45:12,0,0.0,
+R8,frabbisw/robustextended,full,am-smoke-20261013-204434,23927100,collect,afterany:23927099,CANCELLED,operator,2026-10-13T20:44:39,None,2026-10-13T20:45:12,0,0.0,
+R8,frabbisw/robustextended,full,am-smoke-20261013-204521,23927162,setup,,COMPLETED,,2026-10-13T20:45:25,2026-10-13T20:56:40,2026-10-13T20:58:26,106,0.0042,
+R8,frabbisw/robustextended,full,am-smoke-20261013-204521,23927163,main,afterok:23927162,CANCELLED,operator,2026-10-13T20:45:25,None,2026-10-13T21:47:09,0,0.0,
+R8,frabbisw/robustextended,full,am-smoke-20261013-204521,23927164,collect,afterany:23927163,CANCELLED,operator,2026-10-13T20:45:25,None,2026-10-13T21:47:09,0,0.0,
+R9,klsc749/llm4perf,full,am-smoke-20261013-203808,23926457,setup,,FAILED,,2026-10-13T20:38:10,2026-10-13T20:42:23,2026-10-13T20:42:34,11,0.0004,wheel: numpy (wheelhouse hidden: PIP_FIND_LINKS)
+R9,klsc749/llm4perf,full,am-smoke-20261013-203808,23926458,main,afterok:23926457,CANCELLED,dependency,2026-10-13T20:38:10,None,2026-10-13T20:42:39,0,0.0,
+R9,klsc749/llm4perf,full,am-smoke-20261013-203808,23926459,collect,afterany:23926458,CANCELLED,operator,2026-10-13T20:38:10,None,2026-10-13T20:45:12,0,0.0,
+R9,klsc749/llm4perf,full,am-smoke-20261013-204517,23927151,setup,,FAILED,,2026-10-13T20:45:18,2026-10-13T20:56:40,2026-10-13T21:41:06,2666,0.1058,step models_present rc=141
+R9,klsc749/llm4perf,full,am-smoke-20261013-204517,23927152,main,afterok:23927151,CANCELLED,dependency,2026-10-13T20:45:18,None,2026-10-13T21:41:09,0,0.0,
+R9,klsc749/llm4perf,full,am-smoke-20261013-204517,23927153,collect,afterany:23927152,COMPLETED,,2026-10-13T20:45:19,2026-10-13T21:46:11,2026-10-13T21:46:36,25,0.001,
+R10,leaperovo/logreasoner,probe,am-20261013-210104,23927871,setup,,CANCELLED,operator,2026-10-13T21:01:08,None,2026-10-13T21:10:10,0,0.0,
+R10,leaperovo/logreasoner,probe,am-20261013-210104,23927872,probe,afterany:23927871,CANCELLED,operator,2026-10-13T21:01:09,None,2026-10-13T21:10:11,0,0.0,
+R10,leaperovo/logreasoner,probe,am-20261013-210104,23927873,collect,afterany:23927872,CANCELLED,operator,2026-10-13T21:01:09,None,2026-10-13T21:10:11,0,0.0,
+R10,leaperovo/logreasoner,probe,am-20261013-211013,23928253,setup,,CANCELLED,operator,2026-10-13T21:10:18,None,2026-10-13T21:47:09,0,0.0,
+R10,leaperovo/logreasoner,probe,am-20261013-211013,23928254,probe,afterany:23928253,CANCELLED,operator,2026-10-13T21:10:18,None,2026-10-13T21:47:09,0,0.0,
+R10,leaperovo/logreasoner,probe,am-20261013-211013,23928255,collect,afterany:23928254,CANCELLED,operator,2026-10-13T21:10:18,None,2026-10-13T21:47:09,0,0.0,

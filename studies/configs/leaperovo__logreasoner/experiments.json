@@ -1,0 +1,115 @@
+{
+ "_repro": {
+  "paper": "LogReasoner (TOSEM 2026)",
+  "src_dirs": ".",
+  "hash_dirs": ".",
+  "modules": "StdEnv/2023 python/3.11 arrow/24.0.0 opencv/4.13.0"
+ },
+ "project": "r_probe_logreasoner",
+ "require_gpu": true,
+ "vars": {},
+ "smoke": {
+  "vars": {},
+  "time": "00:55:00"
+ },
+ "stages": [
+  {
+   "name": "setup",
+   "description": "data and models for the probe",
+   "internet": true,
+   "resources": {
+    "gpus": "h100_1g.10gb:1",
+    "cpus": 4,
+    "mem": "16G",
+    "time": "02:00:00"
+   },
+   "steps": [
+    {
+     "name": "check_gpu",
+     "builtin": "check_gpu",
+     "always": true
+    },
+    {
+     "name": "setup_0",
+     "cmd": "HF_HUB_OFFLINE=0 python -c \"from huggingface_hub import snapshot_download as s; print(s('unsloth/llama-3-8b-Instruct', allow_patterns=['*.json','*.safetensors','tokenizer*']))\" | tail -1 > {RESULTS}/llama_path.txt && P=$(cat {RESULTS}/llama_path.txt) && cd {REPO}/LLaMA-Factory-main && ln -sfn $P llama3-8b-instruct && mkdir -p llama_models && ln -sfn $P llama_models/llama3-8b-instruct && ls -la llama3-8b-instruct llama_models"
+    }
+   ]
+  },
+  {
+   "name": "probe",
+   "description": "every documented entry point, README order, minimal sizes",
+   "depends": [
+    {
+     "stage": "setup",
+     "type": "afterany"
+    }
+   ],
+   "resources": {
+    "gpus": "h100:1",
+    "cpus": 6,
+    "mem": "48G",
+    "time": "08:00:00"
+   },
+   "steps": [
+    {
+     "name": "env_requirements",
+     "cmd": "cd {REPO} && pip install --no-index -r requirements.txt"
+    },
+    {
+     "name": "env_llamafactory",
+     "cmd": "cd {REPO}/LLaMA-Factory-main && pip install --no-index --no-deps -e . && llamafactory-cli version"
+    },
+    {
+     "name": "1_sft_ldsm",
+     "cmd": "cd {REPO}/LLaMA-Factory-main && HF_HUB_OFFLINE=1 timeout 3h llamafactory-cli train examples/llama3_lora_sft_ldsm_2.yaml"
+    },
+    {
+     "name": "2_dpo",
+     "cmd": "cd {REPO}/LLaMA-Factory-main && HF_HUB_OFFLINE=1 timeout 3h llamafactory-cli train examples/llama3_lora_dpo.yaml"
+    },
+    {
+     "name": "3_inference_vllm",
+     "cmd": "cd {REPO} && HF_HUB_OFFLINE=1 timeout 1h python inference_with_vllm.py"
+    }
+   ]
+  },
+  {
+   "name": "collect",
+   "depends": [
+    {
+     "stage": "probe",
+     "type": "afterany"
+    }
+   ],
+   "resources": {
+    "gpus": "h100_1g.10gb:1",
+    "cpus": 2,
+    "mem": "8G",
+    "time": "01:00:00"
+   },
+   "steps": [
+    {
+     "name": "compare",
+     "cmd": "python {HPC}/compare.py {RESULTS} {HPC}/reported.csv",
+     "always": true
+    },
+    {
+     "name": "collect",
+     "builtin": "collect",
+     "always": true
+    }
+   ]
+  }
+ ],
+ "results": {
+  "tables": [
+   {
+    "name": "comparison",
+    "glob": "compare/comparison.csv"
+   }
+  ],
+  "copy": [
+   "compare/*"
+  ]
+ }
+}

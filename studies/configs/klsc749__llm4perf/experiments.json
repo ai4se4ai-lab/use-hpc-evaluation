@@ -1,0 +1,35 @@
+{
+  "_repro": {"paper": "LLM4Perf (ICSE 2026)", "src_dirs": "perf_agent_sampler", "hash_dirs": "perf_agent_sampler dataset"},
+  "project": "r_llm4perf",
+  "require_gpu": true,
+  "vars": {"BUDGET": "20", "REPEATS": "10", "STEP": "10"},
+  "smoke": {"vars": {"BUDGET": "1", "REPEATS": "1", "STEP": "1"}, "time": "00:50:00", "matrix_limit": 1},
+  "stages": [
+    {"name": "setup", "description": "pull Qwen2.5 7B/32B instruct into the shared Ollama store; check the GPU",
+     "internet": true, "resources": {"gpus": "h100_1g.10gb:1", "cpus": 2, "mem": "16G", "time": "02:00:00"},
+     "steps": [
+       {"name": "check_gpu", "builtin": "check_gpu", "always": true},
+       {"name": "models_present", "cmd": "$OLLAMA_PREFIX/bin/ollama list | tee {RESULTS}/setup/ollama_list.txt | grep -q 'qwen2.5:32b-instruct' && grep -q 'qwen2.5:7b-instruct' {RESULTS}/setup/ollama_list.txt", "critical": true, "always": true}
+     ]},
+    {"name": "main", "description": "LLM4Perf sampler: model x system, budget 20, 10 repetitions (paper Sec. 4)",
+     "depends": [{"stage": "setup", "type": "afterok"}],
+     "matrix": {"model": ["qwen2.5:7b-instruct", "qwen2.5:32b-instruct"], "system": ["lrzip", "sqlite", "x264", "javagc"]},
+     "resources": {"gpus": "h100_3g.40gb:1", "cpus": 6, "mem": "32G", "time": "12:00:00", "requeue": true},
+     "steps": [
+       {"name": "sample", "retries": 1,
+        "cmd": "W=$TMPDIR/w_{CELL}; rm -rf $W && mkdir -p $W && cp -r {REPO}/perf_agent_sampler {REPO}/dataset $W/ && cd $W/perf_agent_sampler && S=$(ls {system}_agent_sample*.py) && python $S --max_cmd_num {BUDGET} --model_name '{model}' --config_gen_model_name '{model}' --epochs {REPEATS} --num_of_samples {STEP} && mkdir -p {RESULTS}/main/{CELL} && cp -r sample_res/. {RESULTS}/main/{CELL}/",
+        "produces": ["main/{CELL}/**/*_cmd_list.json"]}
+     ]},
+    {"name": "collect", "description": "descriptive summary of the samples; comparison table; collection",
+     "depends": [{"stage": "main", "type": "afterany"}],
+     "resources": {"gpus": "h100_1g.10gb:1", "cpus": 2, "mem": "8G", "time": "01:00:00"},
+     "steps": [
+       {"name": "compare", "cmd": "python {HPC}/compare.py {RESULTS} {HPC}/reported.csv", "always": true},
+       {"name": "collect", "builtin": "collect", "always": true}
+     ]}
+  ],
+  "results": {
+    "tables": [{"name": "measured", "glob": "compare/measured.csv"}, {"name": "comparison", "glob": "compare/comparison.csv"}],
+    "copy": ["compare/*", "setup/*"], "archive": ["main"]
+  }
+}
